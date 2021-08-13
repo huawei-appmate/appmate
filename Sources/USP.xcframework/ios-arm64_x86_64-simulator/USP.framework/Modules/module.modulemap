@@ -1,0 +1,11 @@
+framework module USP {
+  umbrella header "USP.h"
+
+  export *
+  module * { export * }
+}
+
+module USP.Swift {
+    header "USP-Swift.h"
+    requires objc
+}
