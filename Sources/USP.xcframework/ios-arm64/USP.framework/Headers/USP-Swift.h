@@ -282,9 +282,40 @@ typedef SWIFT_ENUM(NSInteger, PurchaseCode, open) {
 };
 static NSString * _Nonnull const PurchaseCodeDomain = @"USP.PurchaseCode";
 
+@class NSNumber;
 
 SWIFT_CLASS("_TtC3USP12PurchaseInfo")
 @interface PurchaseInfo : NSObject
+@property (nonatomic, copy) NSString * _Nonnull userId;
+@property (nonatomic, copy) NSString * _Nonnull uspAppId;
+@property (nonatomic, copy) NSString * _Nonnull productId;
+@property (nonatomic, copy) NSString * _Nonnull orderId;
+@property (nonatomic, copy) NSString * _Nonnull purchaseTime;
+@property (nonatomic) NSInteger purchaseStatus;
+@property (nonatomic, copy) NSString * _Nonnull purchaseToken;
+@property (nonatomic) BOOL autoRenew;
+@property (nonatomic, copy) NSString * _Nonnull developerPayload;
+@property (nonatomic, copy) NSString * _Nonnull platform;
+@property (nonatomic) BOOL sandbox;
+@property (nonatomic, copy) NSString * _Nonnull purchaseType;
+@property (nonatomic) NSInteger consumed;
+@property (nonatomic, copy) NSString * _Nonnull country;
+@property (nonatomic, copy) NSString * _Nonnull currency;
+@property (nonatomic, copy) NSString * _Nonnull price;
+@property (nonatomic, copy) NSString * _Nullable subGroupId;
+@property (nonatomic, copy) NSString * _Nullable cancelReason;
+@property (nonatomic, copy) NSString * _Nullable expireTime;
+@property (nonatomic, copy) NSString * _Nullable lastOrderId;
+@property (nonatomic, copy) NSString * _Nullable inTrialPeriod;
+@property (nonatomic, copy) NSString * _Nullable introductoryPrice;
+@property (nonatomic, copy) NSString * _Nullable renewPrice;
+@property (nonatomic, copy) NSString * _Nullable graceExpireTime;
+@property (nonatomic, copy) NSString * _Nullable renewTime;
+@property (nonatomic, copy) NSString * _Nullable discountRenewTime;
+@property (nonatomic, copy) NSString * _Nullable nextRenewTime;
+@property (nonatomic, copy) NSString * _Nullable autoResumeTime;
+@property (nonatomic, copy) NSString * _Nullable linkedPurchasedToken;
+@property (nonatomic, copy) NSString * _Nullable receiptData;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -302,9 +333,7 @@ SWIFT_CLASS("_TtC3USP18PurchaseResultInfo")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class NSNumber;
 @class USPError;
-@class UnsubscribeResponse;
 
 SWIFT_CLASS("_TtC3USP9USPClient")
 @interface USPClient : NSObject
@@ -326,7 +355,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) USPClient * _Nonnull s
 - (void)consumePurchaseWithPurchaseToken:(NSString * _Nonnull)purchaseToken completion:(void (^ _Nonnull)(ConsumePurchaseResponse * _Nullable, USPError * _Nullable))completion;
 - (void)consumePurchasesWithPurchaseTokens:(NSArray<NSString *> * _Nonnull)purchaseTokens completion:(void (^ _Nonnull)(ConsumePurchaseResponse * _Nullable, USPError * _Nullable))completion;
 - (void)restorePurchasesWithCompletion:(void (^ _Nonnull)(NSArray<PurchaseInfo *> * _Nullable, USPError * _Nullable))completion;
-- (void)unsubscribeFrom:(NSString * _Nonnull)purchaseToken completion:(void (^ _Nonnull)(UnsubscribeResponse * _Nullable, USPError * _Nullable))completion;
 - (void)unsubscribe;
 - (void)createUserIdRelationWith:(NSString * _Nonnull)masterUserId completion:(void (^ _Nonnull)(CreateUserRelationResponse * _Nullable, USPError * _Nullable))completion;
 - (void)deleteMasterUserIdRelationFor:(NSString * _Nonnull)masterUserId completion:(void (^ _Nonnull)(DeleteUserRelationResponse * _Nullable, USPError * _Nullable))completion;

@@ -100,38 +100,38 @@ public struct ResultInfo : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
-@objc @_hasMissingDesignatedInitializers public class PurchaseInfo : ObjectiveC.NSObject, Swift.Codable {
-  public var userId: Swift.String
-  public var uspAppId: Swift.String
-  public var productId: Swift.String
-  public var orderId: Swift.String
-  public var purchaseTime: Swift.String
-  public var purchaseStatus: Swift.Int
-  public var purchaseToken: Swift.String
-  public var autoRenew: Swift.Bool
-  public var developerPayload: Swift.String
-  public var platform: Swift.String
-  public var sandbox: Swift.Bool
-  public var purchaseType: Swift.String
-  public var consumed: Swift.Int
-  public var country: Swift.String
-  public var currency: Swift.String
-  public var price: Swift.String
-  public var subGroupId: Swift.String?
-  public var cancelReason: Swift.String?
-  public var expireTime: Swift.String?
-  public var lastOrderId: Swift.String?
-  public var inTrialPeriod: Swift.String?
-  public var introductoryPrice: Swift.String?
-  public var renewPrice: Swift.String?
-  public var graceExpireTime: Swift.String?
-  public var renewTime: Swift.String?
-  public var discountRenewTime: Swift.String?
-  public var nextRenewTime: Swift.String?
+@objc @_hasMissingDesignatedInitializers @objcMembers public class PurchaseInfo : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var userId: Swift.String
+  @objc public var uspAppId: Swift.String
+  @objc public var productId: Swift.String
+  @objc public var orderId: Swift.String
+  @objc public var purchaseTime: Swift.String
+  @objc public var purchaseStatus: Swift.Int
+  @objc public var purchaseToken: Swift.String
+  @objc public var autoRenew: Swift.Bool
+  @objc public var developerPayload: Swift.String
+  @objc public var platform: Swift.String
+  @objc public var sandbox: Swift.Bool
+  @objc public var purchaseType: Swift.String
+  @objc public var consumed: Swift.Int
+  @objc public var country: Swift.String
+  @objc public var currency: Swift.String
+  @objc public var price: Swift.String
+  @objc public var subGroupId: Swift.String?
+  @objc public var cancelReason: Swift.String?
+  @objc public var expireTime: Swift.String?
+  @objc public var lastOrderId: Swift.String?
+  @objc public var inTrialPeriod: Swift.String?
+  @objc public var introductoryPrice: Swift.String?
+  @objc public var renewPrice: Swift.String?
+  @objc public var graceExpireTime: Swift.String?
+  @objc public var renewTime: Swift.String?
+  @objc public var discountRenewTime: Swift.String?
+  @objc public var nextRenewTime: Swift.String?
   public var priceChange: USP.SubscriptionPriceChange?
-  public var autoResumeTime: Swift.String?
-  public var linkedPurchasedToken: Swift.String?
-  public var receiptData: Swift.String
+  @objc public var autoResumeTime: Swift.String?
+  @objc public var linkedPurchasedToken: Swift.String?
+  @objc public var receiptData: Swift.String?
   @objc override dynamic public var description: Swift.String {
     @objc get
   }
@@ -155,7 +155,6 @@ public struct ResultInfo : Swift.Codable {
   @objc public func consumePurchaseWithPurchaseToken(_ purchaseToken: Swift.String, completion: @escaping (USP.ConsumePurchaseResponse?, USP.USPError?) -> Swift.Void)
   @objc public func consumePurchasesWithPurchaseTokens(_ purchaseTokens: [Swift.String], completion: @escaping (USP.ConsumePurchaseResponse?, USP.USPError?) -> Swift.Void)
   @objc public func restorePurchases(completion: @escaping ([USP.PurchaseInfo]?, USP.USPError?) -> Swift.Void)
-  @objc public func unsubscribe(from purchaseToken: Swift.String, completion: @escaping (USP.UnsubscribeResponse?, USP.USPError?) -> Swift.Void)
   @objc public func unsubscribe()
   @objc public func createUserIdRelation(with masterUserId: Swift.String, completion: @escaping (USP.CreateUserRelationResponse?, USP.USPError?) -> Swift.Void)
   @objc public func deleteMasterUserIdRelation(for masterUserId: Swift.String, completion: @escaping (USP.DeleteUserRelationResponse?, USP.USPError?) -> Swift.Void)
@@ -192,6 +191,9 @@ public let APIBaseURL: Swift.String
   case ineligibleForOffer = 18
   case unsupportedPlatform = 19
   case overlayPresentedInBackgroundScene = 20
+  public var description: Swift.String {
+    get
+  }
   public init?(rawValue: ObjectiveC.NSInteger)
   public typealias RawValue = ObjectiveC.NSInteger
   public static var _nsErrorDomain: Swift.String {
