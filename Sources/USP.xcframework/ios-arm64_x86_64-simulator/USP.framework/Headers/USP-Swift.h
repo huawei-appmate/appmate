@@ -209,19 +209,19 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+@class NSString;
 
 SWIFT_CLASS("_TtC3USP23ConsumePurchaseResponse")
 @interface ConsumePurchaseResponse : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class NSString;
 
 SWIFT_CLASS("_TtC3USP26CreateUserRelationResponse")
 @interface CreateUserRelationResponse : NSObject
-@property (nonatomic, readonly, copy) NSString * _Nullable masterUser;
-@property (nonatomic, readonly, copy) NSString * _Nullable slaveUser;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -229,8 +229,15 @@ SWIFT_CLASS("_TtC3USP26CreateUserRelationResponse")
 
 SWIFT_CLASS("_TtC3USP26DeleteUserRelationResponse")
 @interface DeleteUserRelationResponse : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC3USP18DescriptionDecoder")
+@interface DescriptionDecoder : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -250,9 +257,6 @@ SWIFT_CLASS("_TtC3USP7Product")
 @property (nonatomic, copy) NSString * _Nullable trialPeriod;
 @property (nonatomic, copy) NSString * _Nullable introductoryPeriod;
 @property (nonatomic, copy) NSString * _Nullable gracePeriod;
-@property (nonatomic, copy) NSString * _Nullable huaweiPromotionPriority;
-@property (nonatomic, copy) NSString * _Nullable googleSyncStatus;
-@property (nonatomic, copy) NSString * _Nullable huaweiSyncStatus;
 @property (nonatomic, copy) NSString * _Nullable appleSyncStatus;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -323,14 +327,12 @@ SWIFT_CLASS("_TtC3USP12PurchaseInfo")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class SKProduct;
-@class SKPaymentTransaction;
 
 SWIFT_CLASS("_TtC3USP18PurchaseResultInfo")
 @interface PurchaseResultInfo : NSObject
 @property (nonatomic, readonly, strong) Product * _Nullable product;
-@property (nonatomic, readonly, strong) SKProduct * _Nullable skProduct;
-@property (nonatomic, readonly, strong) SKPaymentTransaction * _Nullable skPaymentTransaction;
+@property (nonatomic, readonly, strong) PurchaseInfo * _Nullable purchaseInfo;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -346,7 +348,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) USPClient * _Nonnull s
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (void)setSandboxActive:(BOOL)isActive;
 - (void)setApiKey:(NSString * _Nonnull)apiKey;
-- (void)setSharedSecret:(NSString * _Nonnull)sharedSecret;
 - (void)setUserId:(NSString * _Nonnull)userId;
 - (void)getProductsWithCompletion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, USPError * _Nullable))completion;
 - (void)getProductsWithType:(NSString * _Nonnull)type completion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, USPError * _Nullable))completion;
@@ -367,13 +368,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) USPClient * _Nonnull s
 SWIFT_CLASS("_TtC3USP8USPError")
 @interface USPError : NSObject
 @property (nonatomic, copy) NSString * _Null_unspecified message;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC3USP19UnsubscribeResponse")
-@interface UnsubscribeResponse : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -594,19 +589,19 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+@class NSString;
 
 SWIFT_CLASS("_TtC3USP23ConsumePurchaseResponse")
 @interface ConsumePurchaseResponse : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class NSString;
 
 SWIFT_CLASS("_TtC3USP26CreateUserRelationResponse")
 @interface CreateUserRelationResponse : NSObject
-@property (nonatomic, readonly, copy) NSString * _Nullable masterUser;
-@property (nonatomic, readonly, copy) NSString * _Nullable slaveUser;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -614,8 +609,15 @@ SWIFT_CLASS("_TtC3USP26CreateUserRelationResponse")
 
 SWIFT_CLASS("_TtC3USP26DeleteUserRelationResponse")
 @interface DeleteUserRelationResponse : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC3USP18DescriptionDecoder")
+@interface DescriptionDecoder : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -635,9 +637,6 @@ SWIFT_CLASS("_TtC3USP7Product")
 @property (nonatomic, copy) NSString * _Nullable trialPeriod;
 @property (nonatomic, copy) NSString * _Nullable introductoryPeriod;
 @property (nonatomic, copy) NSString * _Nullable gracePeriod;
-@property (nonatomic, copy) NSString * _Nullable huaweiPromotionPriority;
-@property (nonatomic, copy) NSString * _Nullable googleSyncStatus;
-@property (nonatomic, copy) NSString * _Nullable huaweiSyncStatus;
 @property (nonatomic, copy) NSString * _Nullable appleSyncStatus;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -708,14 +707,12 @@ SWIFT_CLASS("_TtC3USP12PurchaseInfo")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class SKProduct;
-@class SKPaymentTransaction;
 
 SWIFT_CLASS("_TtC3USP18PurchaseResultInfo")
 @interface PurchaseResultInfo : NSObject
 @property (nonatomic, readonly, strong) Product * _Nullable product;
-@property (nonatomic, readonly, strong) SKProduct * _Nullable skProduct;
-@property (nonatomic, readonly, strong) SKPaymentTransaction * _Nullable skPaymentTransaction;
+@property (nonatomic, readonly, strong) PurchaseInfo * _Nullable purchaseInfo;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -731,7 +728,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) USPClient * _Nonnull s
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (void)setSandboxActive:(BOOL)isActive;
 - (void)setApiKey:(NSString * _Nonnull)apiKey;
-- (void)setSharedSecret:(NSString * _Nonnull)sharedSecret;
 - (void)setUserId:(NSString * _Nonnull)userId;
 - (void)getProductsWithCompletion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, USPError * _Nullable))completion;
 - (void)getProductsWithType:(NSString * _Nonnull)type completion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, USPError * _Nullable))completion;
@@ -752,13 +748,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) USPClient * _Nonnull s
 SWIFT_CLASS("_TtC3USP8USPError")
 @interface USPError : NSObject
 @property (nonatomic, copy) NSString * _Null_unspecified message;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC3USP19UnsubscribeResponse")
-@interface UnsubscribeResponse : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end

@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/USP-Swift.h</key>
 		<data>
-		aY2YRWE/E6UYyThAbH+G6C0FcP4=
+		W1m3zrHEeDxVH+VVpwNfDRZLTD4=
 		</data>
 		<key>Headers/USP.h</key>
 		<data>
@@ -14,31 +14,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		MLoDx1W5YCvJbSgCh77JoRvx2GE=
+		RVan41fzr1IJ7Y9KVx7t1q04UYE=
 		</data>
 		<key>Modules/USP.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		puoJWsEVIRJYkCBCeHgaLDtJ1Fc=
+		CDz7FqViGYAS0K+R+131EoLpYvQ=
 		</data>
 		<key>Modules/USP.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		oJ+YNVBbtdHke1jrDpoR7wT0DJ8=
+		5zUB58OYSU0VS9kRiqrOeUOC0Kg=
 		</data>
 		<key>Modules/USP.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		nHUJkoZbPqb8V3TrQyaUQrgM1IQ=
+		vkAx9a1kVWPyq6Mn0oKDEWRnwJ8=
 		</data>
 		<key>Modules/USP.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		puoJWsEVIRJYkCBCeHgaLDtJ1Fc=
+		CDz7FqViGYAS0K+R+131EoLpYvQ=
 		</data>
 		<key>Modules/USP.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		oJ+YNVBbtdHke1jrDpoR7wT0DJ8=
+		5zUB58OYSU0VS9kRiqrOeUOC0Kg=
 		</data>
 		<key>Modules/USP.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		nHUJkoZbPqb8V3TrQyaUQrgM1IQ=
+		vkAx9a1kVWPyq6Mn0oKDEWRnwJ8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -51,7 +51,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZiMm1715qeF5FiUCMmIhhSW1FiV/sVsmtUmJ5T5j7YY=
+			zd26vR+/dAho5iARnVJXFZPKaKJ82rWtCoCqtiomdxY=
 			</data>
 		</dict>
 		<key>Headers/USP.h</key>
@@ -65,42 +65,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7/MU0x/5pFHd0I8EUCOIT3qnDda/SziLtq6vGgj9rfY=
+			X/ht/UAInYzk8810aLzu2iYBM0vXxP6WPLO81NirO3Y=
 			</data>
 		</dict>
 		<key>Modules/USP.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Z3yN1xjMOM5POosLcFsxvt8NdYQyO4hH5u4deUclUY4=
+			6r/9x9sdiFiaisarC+qG5tvgZd60oI7UqEYKOb01NjA=
 			</data>
 		</dict>
 		<key>Modules/USP.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pdxJsDj8L77aKkrjcbp7UWEmoDbeDczOTQjLw1AGyeo=
+			Dvd4rAF7s1AOD/0Q5h6NjRtPU/1lfhS1ItF6ussBRBM=
 			</data>
 		</dict>
 		<key>Modules/USP.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7/MU0x/5pFHd0I8EUCOIT3qnDda/SziLtq6vGgj9rfY=
+			X/ht/UAInYzk8810aLzu2iYBM0vXxP6WPLO81NirO3Y=
 			</data>
 		</dict>
 		<key>Modules/USP.swiftmodule/arm64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Z3yN1xjMOM5POosLcFsxvt8NdYQyO4hH5u4deUclUY4=
+			6r/9x9sdiFiaisarC+qG5tvgZd60oI7UqEYKOb01NjA=
 			</data>
 		</dict>
 		<key>Modules/USP.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pdxJsDj8L77aKkrjcbp7UWEmoDbeDczOTQjLw1AGyeo=
+			Dvd4rAF7s1AOD/0Q5h6NjRtPU/1lfhS1ItF6ussBRBM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

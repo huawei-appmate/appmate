@@ -1,25 +1,28 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
-// swift-module-flags: -target arm64-apple-ios11.2-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name USP
+// swift-module-flags: -target arm64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name USP
 import Foundation
 import StoreKit
 import Swift
 import UIKit
 @_exported import USP
-@objc @_hasMissingDesignatedInitializers @objcMembers public class UnsubscribeResponse : ObjectiveC.NSObject, Swift.Codable {
-  final public let result: USP.ResultInfo?
+@objc @_hasMissingDesignatedInitializers @objcMembers public class PurchaseResultInfo : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let product: USP.Product?
+  @objc final public let purchaseInfo: USP.PurchaseInfo?
+  final public let purchaseCode: USP.PurchaseCode?
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
   @objc override dynamic public init()
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
 }
-@objc @_hasMissingDesignatedInitializers @objcMembers public class PurchaseResultInfo : ObjectiveC.NSObject {
-  @objc final public let product: USP.Product?
-  final public let purchaseCode: USP.PurchaseCode?
-  @objc final public let skProduct: StoreKit.SKProduct?
-  @objc final public let skPaymentTransaction: StoreKit.SKPaymentTransaction?
-  @objc override dynamic public init()
-  @objc deinit
+public struct UserRelation : Swift.Codable {
+  public let masterUser: Swift.String?
+  public let slaveUser: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public struct ProductResponse : Swift.Codable {
   public let result: USP.ResultInfo?
@@ -52,16 +55,26 @@ public struct PurchaseResponseData : Swift.Codable {
 }
 @objc @_hasMissingDesignatedInitializers @objcMembers public class CreateUserRelationResponse : ObjectiveC.NSObject, Swift.Codable {
   final public let result: USP.ResultInfo?
-  @objc final public let masterUser: Swift.String?
-  @objc final public let slaveUser: Swift.String?
+  final public let data: USP.UserRelation?
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
   @objc override dynamic public init()
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
 }
+public struct SyncInfo : Swift.Codable {
+  public let status: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
 @objc @_hasMissingDesignatedInitializers @objcMembers public class DeleteUserRelationResponse : ObjectiveC.NSObject, Swift.Codable {
   final public let result: USP.ResultInfo?
   final public let data: Swift.Bool?
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
   @objc override dynamic public init()
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
@@ -80,6 +93,9 @@ public enum ProductType : Swift.String, Swift.Codable {
 @objc @_hasMissingDesignatedInitializers @objcMembers public class ConsumePurchaseResponse : ObjectiveC.NSObject, Swift.Codable {
   final public let result: USP.ResultInfo?
   final public let data: Swift.Bool?
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
   @objc override dynamic public init()
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
@@ -144,7 +160,6 @@ public struct ResultInfo : Swift.Codable {
   @objc public static var shared: USP.USPClient
   @objc public func setSandboxActive(_ isActive: Swift.Bool)
   @objc public func setApiKey(_ apiKey: Swift.String)
-  @objc public func setSharedSecret(_ sharedSecret: Swift.String)
   @objc public func setUserId(_ userId: Swift.String)
   @objc public func getProducts(completion: @escaping ([USP.Product]?, USP.USPError?) -> Swift.Void)
   @objc public func getProductsWithType(_ type: Swift.String, completion: @escaping ([USP.Product]?, USP.USPError?) -> Swift.Void)
@@ -168,7 +183,7 @@ public struct GetUserIdByPurchaseTokensResponse : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
 }
 public let APIBaseURL: Swift.String
-@objc public enum PurchaseCode : ObjectiveC.NSInteger, Swift.Error {
+@objc public enum PurchaseCode : ObjectiveC.NSInteger, Swift.Error, Swift.Codable {
   case success = 0
   case unknown = -1
   case clientInvalid = 1
@@ -211,6 +226,11 @@ public let APIBaseURL: Swift.String
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
 }
+@objc @_inheritsConvenienceInitializers public class DescriptionDecoder : ObjectiveC.NSObject {
+  public func decode<T>(_ type: T.Type, from description: Swift.String) -> T? where T : Swift.Decodable
+  @objc override dynamic public init()
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers @objcMembers public class Product : ObjectiveC.NSObject, Swift.Codable {
   @objc public var id: Swift.String?
   @objc public var productId: Swift.String?
@@ -231,10 +251,8 @@ public let APIBaseURL: Swift.String
   public var disDefaultPrice: USP.PriceInfo?
   public var disPrices: [USP.PriceInfo]?
   @objc public var gracePeriod: Swift.String?
-  @objc public var huaweiPromotionPriority: Swift.String?
-  @objc public var googleSyncStatus: Swift.String?
-  @objc public var huaweiSyncStatus: Swift.String?
   @objc public var appleSyncStatus: Swift.String?
+  public var appleSyncInfo: USP.SyncInfo?
   @objc override dynamic public var description: Swift.String {
     @objc get
   }
@@ -243,10 +261,15 @@ public let APIBaseURL: Swift.String
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
 }
-@objc @_hasMissingDesignatedInitializers @objcMembers public class USPError : ObjectiveC.NSObject, Swift.Error {
+@objc @_hasMissingDesignatedInitializers @objcMembers public class USPError : ObjectiveC.NSObject, Swift.Error, Swift.Codable {
   @objc public var message: Swift.String!
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
   @objc override dynamic public init()
   @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 @_hasMissingDesignatedInitializers public class SubscriptionPriceChange : Swift.Codable {
   public var priceChangeDesc: Swift.String?
