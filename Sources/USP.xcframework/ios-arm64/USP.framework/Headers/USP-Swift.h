@@ -347,6 +347,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) USPClient * _Nonnull s
 - (void)setSandboxActive:(BOOL)isActive;
 - (void)setApiKey:(NSString * _Nonnull)apiKey;
 - (void)setUserId:(NSString * _Nonnull)userId;
+- (NSString * _Nonnull)getUserId SWIFT_WARN_UNUSED_RESULT;
 - (void)getProductsWithCompletion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, USPError * _Nullable))completion;
 - (void)getProductsWithType:(NSString * _Nonnull)type completion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, USPError * _Nullable))completion;
 - (void)getProductsWithIdList:(NSArray<NSString *> * _Nonnull)idList completion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, USPError * _Nullable))completion;
@@ -366,9 +367,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) USPClient * _Nonnull s
 SWIFT_CLASS("_TtC3USP8USPError")
 @interface USPError : NSObject
 @property (nonatomic, copy) NSString * _Null_unspecified message;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithMessage:(NSString * _Nonnull)message OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 #if __has_attribute(external_source_symbol)

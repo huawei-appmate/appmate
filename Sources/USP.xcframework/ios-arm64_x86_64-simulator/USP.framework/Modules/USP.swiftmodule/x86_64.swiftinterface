@@ -161,6 +161,7 @@ public struct ResultInfo : Swift.Codable {
   @objc public func setSandboxActive(_ isActive: Swift.Bool)
   @objc public func setApiKey(_ apiKey: Swift.String)
   @objc public func setUserId(_ userId: Swift.String)
+  @objc public func getUserId() -> Swift.String
   @objc public func getProducts(completion: @escaping ([USP.Product]?, USP.USPError?) -> Swift.Void)
   @objc public func getProductsWithType(_ type: Swift.String, completion: @escaping ([USP.Product]?, USP.USPError?) -> Swift.Void)
   @objc public func getProductsWithIdList(_ idList: [Swift.String], completion: @escaping ([USP.Product]?, USP.USPError?) -> Swift.Void)
@@ -261,12 +262,13 @@ public let APIBaseURL: Swift.String
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
 }
-@objc @_hasMissingDesignatedInitializers @objcMembers public class USPError : ObjectiveC.NSObject, Swift.Error, Swift.Codable {
+@objc @_inheritsConvenienceInitializers @objcMembers public class USPError : ObjectiveC.NSObject, Swift.Error, Swift.Codable {
   @objc public var message: Swift.String!
+  @objc override dynamic public init()
+  @objc public init(message: Swift.String)
   @objc override dynamic public var description: Swift.String {
     @objc get
   }
-  @objc override dynamic public init()
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws

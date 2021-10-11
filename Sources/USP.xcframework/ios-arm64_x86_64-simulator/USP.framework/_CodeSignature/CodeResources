@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/USP-Swift.h</key>
 		<data>
-		Z2cbtk2/BuYyJwQNPx7GxxWJ65U=
+		hKQJ0BZv4OmQGPhTJv/hCCqvCGg=
 		</data>
 		<key>Headers/USP.h</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		mUONkbDg0gepOQ376zrdGZGKATk=
+		GpBxseFxzn4lmgcUJIvqCKl63W0=
 		</data>
 		<key>Modules/USP.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/USP.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		o1nPBe6/3yDIsvrnqe8b+OMbSDA=
+		UU0rnqj+WBsv13X9BQ1+RW0KjA8=
 		</data>
 		<key>Modules/USP.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		L4DAVA9IWURrccmXNj1UZOO9sZM=
+		vSKPCDKViMgxWkuApc0Mv9ZJoSI=
 		</data>
 		<key>Modules/USP.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/USP.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		o1nPBe6/3yDIsvrnqe8b+OMbSDA=
+		UU0rnqj+WBsv13X9BQ1+RW0KjA8=
 		</data>
 		<key>Modules/USP.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		L4DAVA9IWURrccmXNj1UZOO9sZM=
+		vSKPCDKViMgxWkuApc0Mv9ZJoSI=
 		</data>
 		<key>Modules/USP.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -46,11 +46,11 @@
 		</data>
 		<key>Modules/USP.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		NqKfkI3PnJzCb87KJNsRyMoSfBs=
+		RX1kAILMsFv1p+Pz7EKztZzGyEU=
 		</data>
 		<key>Modules/USP.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		CSJ8wzUeyWYe8NN5245Mv3O5eyw=
+		TQDx9NU5L0AzJqSHvRWU8bJ903Q=
 		</data>
 		<key>Modules/USP.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -58,11 +58,11 @@
 		</data>
 		<key>Modules/USP.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		NqKfkI3PnJzCb87KJNsRyMoSfBs=
+		RX1kAILMsFv1p+Pz7EKztZzGyEU=
 		</data>
 		<key>Modules/USP.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		CSJ8wzUeyWYe8NN5245Mv3O5eyw=
+		TQDx9NU5L0AzJqSHvRWU8bJ903Q=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -75,7 +75,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xB1MQ+dQINEzBpx1DEZ9CnIqfsXHFZ8kx7e46n56BwU=
+			QeqtVhjajmKkiebn1ZhwN0s4llrucksLGcu0n+MZjQM=
 			</data>
 		</dict>
 		<key>Headers/USP.h</key>
@@ -96,14 +96,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0mj75tX5Ciy0z7dRVx24A3HEIiNQiCAAX4znEy8h8Ug=
+			Y23elYtc2PRCvDwOf0IVt9Zubr+D6CA/OOhPy95u/KM=
 			</data>
 		</dict>
 		<key>Modules/USP.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QXPT2mRGSspzvRVJnpkOE8v0SfOrWnP7cGwCeU/0f8A=
+			86i7OREQ1WbhK9zYdPy11a5aru6kjCALGqHKduhH77I=
 			</data>
 		</dict>
 		<key>Modules/USP.swiftmodule/arm64.swiftdoc</key>
@@ -117,14 +117,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0mj75tX5Ciy0z7dRVx24A3HEIiNQiCAAX4znEy8h8Ug=
+			Y23elYtc2PRCvDwOf0IVt9Zubr+D6CA/OOhPy95u/KM=
 			</data>
 		</dict>
 		<key>Modules/USP.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QXPT2mRGSspzvRVJnpkOE8v0SfOrWnP7cGwCeU/0f8A=
+			86i7OREQ1WbhK9zYdPy11a5aru6kjCALGqHKduhH77I=
 			</data>
 		</dict>
 		<key>Modules/USP.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -138,14 +138,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LRNidi3+IxbHy0nEL0nzmRwIbfbR6fkho1nDkJyBgbE=
+			j2nANxqJyQBc6Y774K+f8D8H0sh+k1oSIDUGqgWIpc4=
 			</data>
 		</dict>
 		<key>Modules/USP.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3YqYIeF78dwFuFc+D7Ug2hqQDzMTb8sKHrgRHzAO1Uc=
+			WR+EJegJYv2NHk1/w9fFKiTH1fvPZeSJZtqFCyVyKOs=
 			</data>
 		</dict>
 		<key>Modules/USP.swiftmodule/x86_64.swiftdoc</key>
@@ -159,14 +159,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LRNidi3+IxbHy0nEL0nzmRwIbfbR6fkho1nDkJyBgbE=
+			j2nANxqJyQBc6Y774K+f8D8H0sh+k1oSIDUGqgWIpc4=
 			</data>
 		</dict>
 		<key>Modules/USP.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3YqYIeF78dwFuFc+D7Ug2hqQDzMTb8sKHrgRHzAO1Uc=
+			WR+EJegJYv2NHk1/w9fFKiTH1fvPZeSJZtqFCyVyKOs=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
