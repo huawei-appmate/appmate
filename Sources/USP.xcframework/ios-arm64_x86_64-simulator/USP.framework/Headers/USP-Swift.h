@@ -218,9 +218,11 @@ SWIFT_CLASS("_TtC3USP23ConsumePurchaseResponse")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class UserRelation;
 
 SWIFT_CLASS("_TtC3USP26CreateUserRelationResponse")
 @interface CreateUserRelationResponse : NSObject
+@property (nonatomic, readonly, strong) UserRelation * _Nullable data;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -243,7 +245,6 @@ SWIFT_CLASS("_TtC3USP18DescriptionDecoder")
 
 SWIFT_CLASS("_TtC3USP7Product")
 @interface Product : NSObject
-@property (nonatomic, copy) NSString * _Nullable id;
 @property (nonatomic, copy) NSString * _Nullable productId;
 @property (nonatomic, copy) NSString * _Nullable uspAppId;
 @property (nonatomic, copy) NSString * _Nullable defaultLanguage;
@@ -289,6 +290,7 @@ typedef SWIFT_ENUM(NSInteger, PurchaseCode, open) {
 static NSString * _Nonnull const PurchaseCodeDomain = @"USP.PurchaseCode";
 
 @class NSNumber;
+@class SubscriptionPriceChange;
 
 SWIFT_CLASS("_TtC3USP12PurchaseInfo")
 @interface PurchaseInfo : NSObject
@@ -312,13 +314,11 @@ SWIFT_CLASS("_TtC3USP12PurchaseInfo")
 @property (nonatomic, copy) NSString * _Nullable cancelReason;
 @property (nonatomic, copy) NSString * _Nullable expireTime;
 @property (nonatomic, copy) NSString * _Nullable lastOrderId;
-@property (nonatomic, copy) NSString * _Nullable inTrialPeriod;
 @property (nonatomic, copy) NSString * _Nullable introductoryPrice;
 @property (nonatomic, copy) NSString * _Nullable renewPrice;
 @property (nonatomic, copy) NSString * _Nullable graceExpireTime;
-@property (nonatomic, copy) NSString * _Nullable renewTime;
-@property (nonatomic, copy) NSString * _Nullable discountRenewTime;
 @property (nonatomic, copy) NSString * _Nullable nextRenewTime;
+@property (nonatomic, strong) SubscriptionPriceChange * _Nullable priceChange;
 @property (nonatomic, copy) NSString * _Nullable autoResumeTime;
 @property (nonatomic, copy) NSString * _Nullable linkedPurchasedToken;
 @property (nonatomic, copy) NSString * _Nullable receiptData;
@@ -330,11 +330,17 @@ SWIFT_CLASS("_TtC3USP12PurchaseInfo")
 
 SWIFT_CLASS("_TtC3USP18PurchaseResultInfo")
 @interface PurchaseResultInfo : NSObject
-@property (nonatomic, readonly, strong) Product * _Nullable product;
 @property (nonatomic, readonly, strong) PurchaseInfo * _Nullable purchaseInfo;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC3USP23SubscriptionPriceChange")
+@interface SubscriptionPriceChange : NSObject
+@property (nonatomic, copy) NSString * _Nullable priceChangeDesc;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class USPError;
@@ -348,6 +354,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) USPClient * _Nonnull s
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (void)setSandboxActive:(BOOL)isActive;
 - (void)setApiKey:(NSString * _Nonnull)apiKey;
+- (void)setTestEnvironment:(BOOL)isTest;
 - (void)setUserId:(NSString * _Nonnull)userId;
 - (NSString * _Nonnull)getUserId SWIFT_WARN_UNUSED_RESULT;
 - (void)getProductsWithCompletion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, USPError * _Nullable))completion;
@@ -372,6 +379,17 @@ SWIFT_CLASS("_TtC3USP8USPError")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithMessage:(NSString * _Nonnull)message OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
+@end
+
+
+SWIFT_CLASS("_TtC3USP12UserRelation")
+@interface UserRelation : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nullable masterUser;
+@property (nonatomic, readonly, copy) NSString * _Nullable slaveUser;
+- (nonnull instancetype)initWithMasterUser:(NSString * _Nullable)masterUser slaveUser:(NSString * _Nullable)slaveUser OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 #if __has_attribute(external_source_symbol)
@@ -599,9 +617,11 @@ SWIFT_CLASS("_TtC3USP23ConsumePurchaseResponse")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class UserRelation;
 
 SWIFT_CLASS("_TtC3USP26CreateUserRelationResponse")
 @interface CreateUserRelationResponse : NSObject
+@property (nonatomic, readonly, strong) UserRelation * _Nullable data;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -624,7 +644,6 @@ SWIFT_CLASS("_TtC3USP18DescriptionDecoder")
 
 SWIFT_CLASS("_TtC3USP7Product")
 @interface Product : NSObject
-@property (nonatomic, copy) NSString * _Nullable id;
 @property (nonatomic, copy) NSString * _Nullable productId;
 @property (nonatomic, copy) NSString * _Nullable uspAppId;
 @property (nonatomic, copy) NSString * _Nullable defaultLanguage;
@@ -670,6 +689,7 @@ typedef SWIFT_ENUM(NSInteger, PurchaseCode, open) {
 static NSString * _Nonnull const PurchaseCodeDomain = @"USP.PurchaseCode";
 
 @class NSNumber;
+@class SubscriptionPriceChange;
 
 SWIFT_CLASS("_TtC3USP12PurchaseInfo")
 @interface PurchaseInfo : NSObject
@@ -693,13 +713,11 @@ SWIFT_CLASS("_TtC3USP12PurchaseInfo")
 @property (nonatomic, copy) NSString * _Nullable cancelReason;
 @property (nonatomic, copy) NSString * _Nullable expireTime;
 @property (nonatomic, copy) NSString * _Nullable lastOrderId;
-@property (nonatomic, copy) NSString * _Nullable inTrialPeriod;
 @property (nonatomic, copy) NSString * _Nullable introductoryPrice;
 @property (nonatomic, copy) NSString * _Nullable renewPrice;
 @property (nonatomic, copy) NSString * _Nullable graceExpireTime;
-@property (nonatomic, copy) NSString * _Nullable renewTime;
-@property (nonatomic, copy) NSString * _Nullable discountRenewTime;
 @property (nonatomic, copy) NSString * _Nullable nextRenewTime;
+@property (nonatomic, strong) SubscriptionPriceChange * _Nullable priceChange;
 @property (nonatomic, copy) NSString * _Nullable autoResumeTime;
 @property (nonatomic, copy) NSString * _Nullable linkedPurchasedToken;
 @property (nonatomic, copy) NSString * _Nullable receiptData;
@@ -711,11 +729,17 @@ SWIFT_CLASS("_TtC3USP12PurchaseInfo")
 
 SWIFT_CLASS("_TtC3USP18PurchaseResultInfo")
 @interface PurchaseResultInfo : NSObject
-@property (nonatomic, readonly, strong) Product * _Nullable product;
 @property (nonatomic, readonly, strong) PurchaseInfo * _Nullable purchaseInfo;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC3USP23SubscriptionPriceChange")
+@interface SubscriptionPriceChange : NSObject
+@property (nonatomic, copy) NSString * _Nullable priceChangeDesc;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class USPError;
@@ -729,6 +753,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) USPClient * _Nonnull s
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (void)setSandboxActive:(BOOL)isActive;
 - (void)setApiKey:(NSString * _Nonnull)apiKey;
+- (void)setTestEnvironment:(BOOL)isTest;
 - (void)setUserId:(NSString * _Nonnull)userId;
 - (NSString * _Nonnull)getUserId SWIFT_WARN_UNUSED_RESULT;
 - (void)getProductsWithCompletion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, USPError * _Nullable))completion;
@@ -753,6 +778,17 @@ SWIFT_CLASS("_TtC3USP8USPError")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithMessage:(NSString * _Nonnull)message OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
+@end
+
+
+SWIFT_CLASS("_TtC3USP12UserRelation")
+@interface UserRelation : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nullable masterUser;
+@property (nonatomic, readonly, copy) NSString * _Nullable slaveUser;
+- (nonnull instancetype)initWithMasterUser:(NSString * _Nullable)masterUser slaveUser:(NSString * _Nullable)slaveUser OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 #if __has_attribute(external_source_symbol)
