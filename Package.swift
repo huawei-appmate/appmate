@@ -4,18 +4,18 @@
 import PackageDescription
 
 let package = Package(
-    name: "USP",
+    name: "Appmate",
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "USP",
-            targets: ["USP"]),
+            name: "Appmate",
+            targets: ["Appmate"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
     ],
     targets: [
-        .binaryTarget(name: "USP", path: "./Sources/USP.xcframework")
+        .binaryTarget(name: "Appmate", path: "./Sources/appmate.xcframework")
     ]
 )
