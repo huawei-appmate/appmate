@@ -171,7 +171,7 @@ public struct ResultInfo : Swift.Codable {
   @objc public static var shared: appmate.PurchaseClient
   @objc public func setSandboxActive(_ isActive: Swift.Bool)
   @objc public func setApiKey(_ apiKey: Swift.String)
-  @objc public func setTestEnvironment(_ isTest: Swift.Bool)
+  @objc public func setRuntimeEnvironment(_ environment: Swift.String)
   @objc public func setUserId(_ userId: Swift.String)
   @objc public func getUserId() -> Swift.String
   @objc public func getProducts(completion: @escaping ([appmate.Product]?, appmate.GenericError?) -> Swift.Void)
@@ -197,6 +197,10 @@ public struct GetUserIdByPurchaseTokensResponse : Swift.Codable {
 }
 public let APIBaseURL: Swift.String
 public let APITestBaseURL: Swift.String
+public let APIPreProdBaseURL: Swift.String
+public let runtimeProd: Swift.String
+public let runtimeTest: Swift.String
+public let runtimePreProd: Swift.String
 @objc public enum PurchaseCode : ObjectiveC.NSInteger, Swift.Error, Swift.Codable {
   case success = 0
   case unknown = -1

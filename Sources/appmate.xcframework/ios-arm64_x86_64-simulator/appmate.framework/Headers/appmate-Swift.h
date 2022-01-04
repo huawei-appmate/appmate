@@ -286,7 +286,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) PurchaseClient * _Nonn
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (void)setSandboxActive:(BOOL)isActive;
 - (void)setApiKey:(NSString * _Nonnull)apiKey;
-- (void)setTestEnvironment:(BOOL)isTest;
+- (void)setRuntimeEnvironment:(NSString * _Nonnull)environment;
 - (void)setUserId:(NSString * _Nonnull)userId;
 - (NSString * _Nonnull)getUserId SWIFT_WARN_UNUSED_RESULT;
 - (void)getProductsWithCompletion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, GenericError * _Nullable))completion;
@@ -687,7 +687,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) PurchaseClient * _Nonn
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (void)setSandboxActive:(BOOL)isActive;
 - (void)setApiKey:(NSString * _Nonnull)apiKey;
-- (void)setTestEnvironment:(BOOL)isTest;
+- (void)setRuntimeEnvironment:(NSString * _Nonnull)environment;
 - (void)setUserId:(NSString * _Nonnull)userId;
 - (NSString * _Nonnull)getUserId SWIFT_WARN_UNUSED_RESULT;
 - (void)getProductsWithCompletion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, GenericError * _Nullable))completion;
