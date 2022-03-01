@@ -243,6 +243,7 @@ SWIFT_CLASS("_TtC7appmate18DescriptionDecoder")
 @end
 
 
+/// An object which is used for custom error messages.
 SWIFT_CLASS("_TtC7appmate12GenericError")
 @interface GenericError : NSObject
 @property (nonatomic, copy) NSString * _Null_unspecified message;
@@ -252,6 +253,28 @@ SWIFT_CLASS("_TtC7appmate12GenericError")
 @end
 
 
+/// In-app purchase product such as consumables, non-consumables or subscriptions.
+/// In order to use in-app purchases, first you must create products.
+/// There are 3 different product types:
+/// <ul>
+///   <li>
+///     Consumables
+///   </li>
+///   <li>
+///     Non-consumables
+///   </li>
+///   <li>
+///     Subscriptions
+///     <ul>
+///       <li>
+///         Auto renewable subscriptions
+///       </li>
+///       <li>
+///         Non-renewable subscriptions.
+///       </li>
+///     </ul>
+///   </li>
+/// </ul>
 SWIFT_CLASS("_TtC7appmate7Product")
 @interface Product : NSObject
 @property (nonatomic, copy) NSString * _Nullable productId;
@@ -268,6 +291,16 @@ SWIFT_CLASS("_TtC7appmate7Product")
 @property (nonatomic, copy) NSString * _Nullable introductoryPeriod;
 @property (nonatomic, copy) NSString * _Nullable gracePeriod;
 @property (nonatomic, copy) NSString * _Nullable appleSyncStatus;
+@property (nonatomic, copy) NSString * _Nullable applePrice;
+@property (nonatomic, copy) NSString * _Nullable appleCurrency;
+@property (nonatomic, copy) NSString * _Nullable appleSubsType;
+@property (nonatomic, copy) NSString * _Nullable appleSubsIntStartDate;
+@property (nonatomic, copy) NSString * _Nullable appleSubsIntEndDate;
+@property (nonatomic, copy) NSString * _Nullable appleSubsIntOfferType;
+@property (nonatomic, copy) NSString * _Nullable appleSubsIntDuration;
+@property (nonatomic, copy) NSString * _Nullable appleSubsIntFreeTrialDuration;
+@property (nonatomic, copy) NSString * _Nullable appleSubsIntFreeTrialStartDate;
+@property (nonatomic, copy) NSString * _Nullable appleSubsIntFreeTrialEndDate;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -277,33 +310,180 @@ SWIFT_CLASS("_TtC7appmate7Product")
 @class PurchaseResultInfo;
 enum PurchaseCode : NSInteger;
 
+/// A class used for creating and controlling in-app purchases.
+/// PurchaseClient is the main class of appmate. Appmate helps developers to manage in-application purchases easily. Thanks to appmate, it is much easier to create and consume IAP products, manage purchases, user relations and vice versa. For further information you can view the detailed <a href="http://www.appmate.tech/docs/sdk/ios">documentation</a>.
 SWIFT_CLASS("_TtC7appmate14PurchaseClient")
 @interface PurchaseClient : NSObject
+/// A shared object for PurchaseClient class.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) PurchaseClient * _Nonnull shared;)
 + (PurchaseClient * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 + (void)setShared:(PurchaseClient * _Nonnull)value;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// This method can be used to fetch non-synched products from appmate. While it is true, non-synched products will also be able to fetched as a response; otherwise, only the products successfully synched with Apple Store can be fetched. The default parameter is false.
+/// \param isActive Used to activate the sandbox. While it is true, non-synched products will also be fetched.
+///
 - (void)setSandboxActive:(BOOL)isActive;
+/// Sets  appmate apiKey.
+/// Api key can be retrieved from appmate portal via navigating to application page.
+/// \param apiKey Unique identifier for using appmate services.
+///
 - (void)setApiKey:(NSString * _Nonnull)apiKey;
 - (void)setRuntimeEnvironment:(NSString * _Nonnull)environment;
+/// Modifies  device user id. The default user id is set by device automatically.
+/// It’s an optional parameter that uniquely identifies your users within your application. You should set it only if you have a membership system for your app.
+/// You could specify your own user identifiers with setUserId method later in your app lifecycle.
+/// This method requires a userId as a type of String and should be a unique value. It’s necessary to fetch products and make purchase.
+/// \param userId Device user id information.
+///
 - (void)setUserId:(NSString * _Nonnull)userId;
+/// Returns device user id.
+/// User id can be retrieved  from appmate SDK regardless of you set a userId or a random userId is created.
+///
+/// returns:
+/// The user id will be returned as String.
 - (NSString * _Nonnull)getUserId SWIFT_WARN_UNUSED_RESULT;
+/// Fetches all the products created on appmate server. If sandbox parameter value is false, non-synched products will not be fetched.
+/// If a previous successful fetch exists in last 10 minutes, it fetches the products from local cache.
+/// So you will be able to get the response faster than getting directly from the network. Otherwise, it will launch a network request.
+/// If you add a new product and want to see it in your app for testing purposes, you can delete your app’s cache.
+/// The products will be fetched from the network the next time you open your app.
+/// \param completion Callbacks Product array and GenericError in case of failure.
+///
 - (void)getProductsWithCompletion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, GenericError * _Nullable))completion;
+/// Fetches the filtered products with specified type from appmate server. If sandbox parameter value is false, non-synched products will not be fetched.
+/// If a previous successful fetch exists in last 10 minutes, it fetches the products from local cache.
+/// So you will be able to get the response faster than getting directly from the network. Otherwise, it will launch a network request.
+/// If you add a new product and want to see it in your app for testing purposes, you can delete your app’s cache.
+/// The products will be fetched from the network the next time you open your app.
+/// \param type Type of products as String. It must be typed as “0” for consumables, “1” for non-consumables and “2” for subscriptions.
+///
+/// \param completion Callbacks Product array and GenericError in case of failure.
+///
 - (void)getProductsWithType:(NSString * _Nonnull)type completion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, GenericError * _Nullable))completion;
+/// Fetches the filtered products with specified id list from appmate server. If sandbox parameter value is false, non-synched products will not be fetched.
+/// If a previous successful fetch exists in last 10 minutes, it fetches the products from local cache.
+/// So you will be able to get the response faster than getting directly from the network. Otherwise, it will launch a network request.
+/// If you add a new product and want to see it in your app for testing purposes, you can delete your app’s cache.
+/// The products will be fetched from the network the next time you open your app.
+/// \param idList List of desired product ids as String array.
+///
+/// \param completion Callbacks Product array and GenericError in case of failure.
+///
 - (void)getProductsWithIdList:(NSArray<NSString *> * _Nonnull)idList completion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, GenericError * _Nullable))completion;
+/// Fetches all the purchases made so far from appmate server.
+/// If a previous successful fetch exists in last 10 minutes, it fetches the products from local cache.
+/// So you will be able to get the response faster than getting directly from the network. Otherwise, it will launch a network request.
+/// By calling getAllPurchases method, you can get the list of purchases made so far.
+/// Purchases which are made before/without appmate will still be returned.
+/// \param completion Callbacks PurchaseInfo array and GenericError in case of failure.
+///
 - (void)getAllPurchasesWithCompletion:(void (^ _Nonnull)(NSArray<PurchaseInfo *> * _Nullable, GenericError * _Nullable))completion;
+/// Fetches all the purchases made so far from appmate server.
+/// If a previous successful fetch exists in last 10 minutes, it fetches the products from local cache.
+/// So you will be able to get the response faster than getting directly from the network. Otherwise, it will launch a network request.
+/// By calling getCurrentPurchases method, you can get the list of purchases filtered by specific rules. These filtering rules are;
+/// <ul>
+///   <li>
+///     Purchased but not consumed consumable products.
+///   </li>
+///   <li>
+///     Non-consumable products.
+///   </li>
+///   <li>
+///     Ongoing subscription products.
+///   </li>
+/// </ul>
+/// Purchases which are made before/without appmate will still be returned if they match these rules.
+/// \param completion Callbacks PurchaseInfo array and GenericError in case of failure.
+///
 - (void)getCurrentPurchasesWithCompletion:(void (^ _Nonnull)(NSArray<PurchaseInfo *> * _Nullable, GenericError * _Nullable))completion;
+/// Launches a new purchase transaction using Apple interface.
+/// When you want to make a purchase transaction, just pass the Product object parameter to the method, then appmate will communicate with AppStore and handle Apple purchase process.
+/// \param with product Provide the Product object you want to purchase.
+///
+/// \param completion Callbacks PurchaseResultInfo and PurchaseCode in case of failure. If PurchaseResultInfo responds as nil, check PurchaseCode for failure info.
+///
 - (void)makePurchaseWith:(Product * _Nonnull)product completion:(void (^ _Nonnull)(PurchaseResultInfo * _Nullable, enum PurchaseCode))completion;
+/// Consume the purchased product specified with purchaseToken.
+/// Once purchase is completed, as a part of purchase process you need to deliver a content with granting entitlement as a result of the user’s purchase.
+/// For one-time consumable product, you need to call consume method of the SDK to indicate that your app has granted entitlement to the user.
+/// With consumption of the one-time consumable product, the product can be purchased again.
+/// After consumption, the product will vanish in current purchases but will still exist in purchase history.
+/// \param purchaseToken Token created after a purchase. It can be found inside PurchaseInfo object.
+///
+/// \param completion Callbacks ConsumePurchaseInfo and GenericError in case of failure.
+///
 - (void)consumePurchaseWithPurchaseToken:(NSString * _Nonnull)purchaseToken completion:(void (^ _Nonnull)(ConsumePurchaseResponse * _Nullable, GenericError * _Nullable))completion;
+/// Consume a list of purchased product specified with purchaseToken list.
+/// Once purchase is completed, as a part of purchase process you need to deliver a content with granting entitlement as a result of the user’s purchase.
+/// For one-time consumable product, you need to call consume method of the SDK to indicate that your app has granted entitlement to the user.
+/// With consumption of the one-time consumable product, the product can be purchased again.
+/// After consumption, the product will vanish in current purchases but will still exist in purchase history.
+/// \param purchaseTokens Tokens as String array created after a purchase. It can be found inside PurchaseInfo object.
+///
+/// \param completion Callbacks boolean and GenericError in case of failure.
+///
 - (void)consumePurchasesWithPurchaseTokens:(NSArray<NSString *> * _Nonnull)purchaseTokens completion:(void (^ _Nonnull)(ConsumePurchaseResponse * _Nullable, GenericError * _Nullable))completion;
+/// Restores all the previous purchases of current user.
+/// If user has purchases from previous installations of the application, it is possible to restore them by using this method.
+/// Apple obliges developers to add a restore button in their applications.
+/// \param completion Callbacks PurchaseInfo array and GenericError in case of failure.
+///
 - (void)restorePurchasesWithCompletion:(void (^ _Nonnull)(NSArray<PurchaseInfo *> * _Nullable, GenericError * _Nullable))completion;
+/// Navigates to Subscriptions page of the device.
+/// Apple does not allow developer to end subscriptions directly; instead, directs to the Subscriptions page of the device.
 - (void)unsubscribe;
+/// Checks whether a product is actively purchased or not.
+/// With calling [isProductPurchased] method of the SDK you can check whether a product is purchased or not.
+/// Once you query a product with productId, a boolean response comes back.
+/// True means that the product is purchased. After consumption, it will respond a false value.
+/// These are accepted as purchased:
+/// <ul>
+///   <li>
+///     Purchased but not consumed consumable products.
+///   </li>
+///   <li>
+///     Non-consumable products.
+///   </li>
+///   <li>
+///     Ongoing subscription products.
+///   </li>
+/// </ul>
+/// \param productId Id of the product to be checked.
+///
+/// \param completion Callbacks Bool and GenericError in case of failure.
+///
+- (void)isProductPurchasedWithProductId:(NSString * _Nonnull)productId completion:(void (^ _Nonnull)(BOOL, GenericError * _Nullable))completion;
+/// Creates a relation between current user and another user.
+/// This method allows developers to establish a connection between users. Thanks to this relation, sub-user will also own all the purchases  master user have made.
+/// For example, you have a user who has two devices and he/she wants to use your app with both of them.
+/// If your user has some purchases that made with the first userId, also second userId will be able to see this products as purchased.
+/// Whenever there is a change in a user’s entitlement to products within your app, the second device user also will be able to get this updates.
+/// It’s easy to use this feature with appmate only by establishing relationships between the users.
+/// \param with masterUserId Id of the user has the purchases of his/her own. User id can be retrieved via <em>getUserId</em> method.
+///
+/// \param completion Callbacks CreateUserRelationResponse and GenericError in case of failure.
+///
 - (void)createUserIdRelationWith:(NSString * _Nonnull)masterUserId completion:(void (^ _Nonnull)(CreateUserRelationResponse * _Nullable, GenericError * _Nullable))completion;
+/// Removes all the existing relations of a master.
+/// If you want to delete all the relationships related to the masterUserId, you can use deleteMasterUserIdRelation method by giving masterUserId as a parameter.
+/// \param for masterUserId Id of the user has the purchases of his/her own. User id can be retrieved via <em>getUserId</em> method.
+///
+/// \param completion Callbacks DeleteUserRelationResponse and GenericError in case of failure.
+///
 - (void)deleteMasterUserIdRelationFor:(NSString * _Nonnull)masterUserId completion:(void (^ _Nonnull)(DeleteUserRelationResponse * _Nullable, GenericError * _Nullable))completion;
+/// Removes the existing relation of a sub-user.
+/// It’s also possible to delete a relationship between the users.
+/// By giving subUserId as a parameter, you can use deleteSubUserIdRelation method and delete a relationship between subUserId and its master.
+/// \param for subUserId Id of the user has the purchases of another user. User id can be retrieved via <em>getUserId</em> method.
+///
+/// \param completion Callbacks DeleteUserRelationResponse and GenericError in case of failure.
+///
 - (void)deleteSubUserIdRelationFor:(NSString * _Nonnull)subUserId completion:(void (^ _Nonnull)(DeleteUserRelationResponse * _Nullable, GenericError * _Nullable))completion;
 @end
 
+/// Enumeration for all possible purchase transaction results.
 typedef SWIFT_ENUM(NSInteger, PurchaseCode, open) {
   PurchaseCodeSuccess = 0,
   PurchaseCodeUnknown = -1,
@@ -332,6 +512,8 @@ static NSString * _Nonnull const PurchaseCodeDomain = @"appmate.PurchaseCode";
 
 @class SubscriptionPriceChange;
 
+/// An object which keeps all information about a purchase.
+/// After a purchase transaction, all the information created is kept in PurchaseInfo objects.
 SWIFT_CLASS("_TtC7appmate12PurchaseInfo")
 @interface PurchaseInfo : NSObject
 @property (nonatomic, copy) NSString * _Nonnull userId;
@@ -368,6 +550,7 @@ SWIFT_CLASS("_TtC7appmate12PurchaseInfo")
 @end
 
 
+/// Result info of a purchase transaction such as success or failure.
 SWIFT_CLASS("_TtC7appmate18PurchaseResultInfo")
 @interface PurchaseResultInfo : NSObject
 @property (nonatomic, readonly, strong) PurchaseInfo * _Nullable purchaseInfo;
@@ -377,6 +560,7 @@ SWIFT_CLASS("_TtC7appmate18PurchaseResultInfo")
 @end
 
 
+
 SWIFT_CLASS("_TtC7appmate23SubscriptionPriceChange")
 @interface SubscriptionPriceChange : NSObject
 @property (nonatomic, copy) NSString * _Nullable priceChangeDesc;
@@ -384,6 +568,7 @@ SWIFT_CLASS("_TtC7appmate23SubscriptionPriceChange")
 @end
 
 
+/// An object which keeps information about a relation such as master and sub-user info.
 SWIFT_CLASS("_TtC7appmate12UserRelation")
 @interface UserRelation : NSObject
 @property (nonatomic, readonly, copy) NSString * _Nullable masterUser;
@@ -644,6 +829,7 @@ SWIFT_CLASS("_TtC7appmate18DescriptionDecoder")
 @end
 
 
+/// An object which is used for custom error messages.
 SWIFT_CLASS("_TtC7appmate12GenericError")
 @interface GenericError : NSObject
 @property (nonatomic, copy) NSString * _Null_unspecified message;
@@ -653,6 +839,28 @@ SWIFT_CLASS("_TtC7appmate12GenericError")
 @end
 
 
+/// In-app purchase product such as consumables, non-consumables or subscriptions.
+/// In order to use in-app purchases, first you must create products.
+/// There are 3 different product types:
+/// <ul>
+///   <li>
+///     Consumables
+///   </li>
+///   <li>
+///     Non-consumables
+///   </li>
+///   <li>
+///     Subscriptions
+///     <ul>
+///       <li>
+///         Auto renewable subscriptions
+///       </li>
+///       <li>
+///         Non-renewable subscriptions.
+///       </li>
+///     </ul>
+///   </li>
+/// </ul>
 SWIFT_CLASS("_TtC7appmate7Product")
 @interface Product : NSObject
 @property (nonatomic, copy) NSString * _Nullable productId;
@@ -669,6 +877,16 @@ SWIFT_CLASS("_TtC7appmate7Product")
 @property (nonatomic, copy) NSString * _Nullable introductoryPeriod;
 @property (nonatomic, copy) NSString * _Nullable gracePeriod;
 @property (nonatomic, copy) NSString * _Nullable appleSyncStatus;
+@property (nonatomic, copy) NSString * _Nullable applePrice;
+@property (nonatomic, copy) NSString * _Nullable appleCurrency;
+@property (nonatomic, copy) NSString * _Nullable appleSubsType;
+@property (nonatomic, copy) NSString * _Nullable appleSubsIntStartDate;
+@property (nonatomic, copy) NSString * _Nullable appleSubsIntEndDate;
+@property (nonatomic, copy) NSString * _Nullable appleSubsIntOfferType;
+@property (nonatomic, copy) NSString * _Nullable appleSubsIntDuration;
+@property (nonatomic, copy) NSString * _Nullable appleSubsIntFreeTrialDuration;
+@property (nonatomic, copy) NSString * _Nullable appleSubsIntFreeTrialStartDate;
+@property (nonatomic, copy) NSString * _Nullable appleSubsIntFreeTrialEndDate;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -678,33 +896,180 @@ SWIFT_CLASS("_TtC7appmate7Product")
 @class PurchaseResultInfo;
 enum PurchaseCode : NSInteger;
 
+/// A class used for creating and controlling in-app purchases.
+/// PurchaseClient is the main class of appmate. Appmate helps developers to manage in-application purchases easily. Thanks to appmate, it is much easier to create and consume IAP products, manage purchases, user relations and vice versa. For further information you can view the detailed <a href="http://www.appmate.tech/docs/sdk/ios">documentation</a>.
 SWIFT_CLASS("_TtC7appmate14PurchaseClient")
 @interface PurchaseClient : NSObject
+/// A shared object for PurchaseClient class.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) PurchaseClient * _Nonnull shared;)
 + (PurchaseClient * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 + (void)setShared:(PurchaseClient * _Nonnull)value;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// This method can be used to fetch non-synched products from appmate. While it is true, non-synched products will also be able to fetched as a response; otherwise, only the products successfully synched with Apple Store can be fetched. The default parameter is false.
+/// \param isActive Used to activate the sandbox. While it is true, non-synched products will also be fetched.
+///
 - (void)setSandboxActive:(BOOL)isActive;
+/// Sets  appmate apiKey.
+/// Api key can be retrieved from appmate portal via navigating to application page.
+/// \param apiKey Unique identifier for using appmate services.
+///
 - (void)setApiKey:(NSString * _Nonnull)apiKey;
 - (void)setRuntimeEnvironment:(NSString * _Nonnull)environment;
+/// Modifies  device user id. The default user id is set by device automatically.
+/// It’s an optional parameter that uniquely identifies your users within your application. You should set it only if you have a membership system for your app.
+/// You could specify your own user identifiers with setUserId method later in your app lifecycle.
+/// This method requires a userId as a type of String and should be a unique value. It’s necessary to fetch products and make purchase.
+/// \param userId Device user id information.
+///
 - (void)setUserId:(NSString * _Nonnull)userId;
+/// Returns device user id.
+/// User id can be retrieved  from appmate SDK regardless of you set a userId or a random userId is created.
+///
+/// returns:
+/// The user id will be returned as String.
 - (NSString * _Nonnull)getUserId SWIFT_WARN_UNUSED_RESULT;
+/// Fetches all the products created on appmate server. If sandbox parameter value is false, non-synched products will not be fetched.
+/// If a previous successful fetch exists in last 10 minutes, it fetches the products from local cache.
+/// So you will be able to get the response faster than getting directly from the network. Otherwise, it will launch a network request.
+/// If you add a new product and want to see it in your app for testing purposes, you can delete your app’s cache.
+/// The products will be fetched from the network the next time you open your app.
+/// \param completion Callbacks Product array and GenericError in case of failure.
+///
 - (void)getProductsWithCompletion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, GenericError * _Nullable))completion;
+/// Fetches the filtered products with specified type from appmate server. If sandbox parameter value is false, non-synched products will not be fetched.
+/// If a previous successful fetch exists in last 10 minutes, it fetches the products from local cache.
+/// So you will be able to get the response faster than getting directly from the network. Otherwise, it will launch a network request.
+/// If you add a new product and want to see it in your app for testing purposes, you can delete your app’s cache.
+/// The products will be fetched from the network the next time you open your app.
+/// \param type Type of products as String. It must be typed as “0” for consumables, “1” for non-consumables and “2” for subscriptions.
+///
+/// \param completion Callbacks Product array and GenericError in case of failure.
+///
 - (void)getProductsWithType:(NSString * _Nonnull)type completion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, GenericError * _Nullable))completion;
+/// Fetches the filtered products with specified id list from appmate server. If sandbox parameter value is false, non-synched products will not be fetched.
+/// If a previous successful fetch exists in last 10 minutes, it fetches the products from local cache.
+/// So you will be able to get the response faster than getting directly from the network. Otherwise, it will launch a network request.
+/// If you add a new product and want to see it in your app for testing purposes, you can delete your app’s cache.
+/// The products will be fetched from the network the next time you open your app.
+/// \param idList List of desired product ids as String array.
+///
+/// \param completion Callbacks Product array and GenericError in case of failure.
+///
 - (void)getProductsWithIdList:(NSArray<NSString *> * _Nonnull)idList completion:(void (^ _Nonnull)(NSArray<Product *> * _Nullable, GenericError * _Nullable))completion;
+/// Fetches all the purchases made so far from appmate server.
+/// If a previous successful fetch exists in last 10 minutes, it fetches the products from local cache.
+/// So you will be able to get the response faster than getting directly from the network. Otherwise, it will launch a network request.
+/// By calling getAllPurchases method, you can get the list of purchases made so far.
+/// Purchases which are made before/without appmate will still be returned.
+/// \param completion Callbacks PurchaseInfo array and GenericError in case of failure.
+///
 - (void)getAllPurchasesWithCompletion:(void (^ _Nonnull)(NSArray<PurchaseInfo *> * _Nullable, GenericError * _Nullable))completion;
+/// Fetches all the purchases made so far from appmate server.
+/// If a previous successful fetch exists in last 10 minutes, it fetches the products from local cache.
+/// So you will be able to get the response faster than getting directly from the network. Otherwise, it will launch a network request.
+/// By calling getCurrentPurchases method, you can get the list of purchases filtered by specific rules. These filtering rules are;
+/// <ul>
+///   <li>
+///     Purchased but not consumed consumable products.
+///   </li>
+///   <li>
+///     Non-consumable products.
+///   </li>
+///   <li>
+///     Ongoing subscription products.
+///   </li>
+/// </ul>
+/// Purchases which are made before/without appmate will still be returned if they match these rules.
+/// \param completion Callbacks PurchaseInfo array and GenericError in case of failure.
+///
 - (void)getCurrentPurchasesWithCompletion:(void (^ _Nonnull)(NSArray<PurchaseInfo *> * _Nullable, GenericError * _Nullable))completion;
+/// Launches a new purchase transaction using Apple interface.
+/// When you want to make a purchase transaction, just pass the Product object parameter to the method, then appmate will communicate with AppStore and handle Apple purchase process.
+/// \param with product Provide the Product object you want to purchase.
+///
+/// \param completion Callbacks PurchaseResultInfo and PurchaseCode in case of failure. If PurchaseResultInfo responds as nil, check PurchaseCode for failure info.
+///
 - (void)makePurchaseWith:(Product * _Nonnull)product completion:(void (^ _Nonnull)(PurchaseResultInfo * _Nullable, enum PurchaseCode))completion;
+/// Consume the purchased product specified with purchaseToken.
+/// Once purchase is completed, as a part of purchase process you need to deliver a content with granting entitlement as a result of the user’s purchase.
+/// For one-time consumable product, you need to call consume method of the SDK to indicate that your app has granted entitlement to the user.
+/// With consumption of the one-time consumable product, the product can be purchased again.
+/// After consumption, the product will vanish in current purchases but will still exist in purchase history.
+/// \param purchaseToken Token created after a purchase. It can be found inside PurchaseInfo object.
+///
+/// \param completion Callbacks ConsumePurchaseInfo and GenericError in case of failure.
+///
 - (void)consumePurchaseWithPurchaseToken:(NSString * _Nonnull)purchaseToken completion:(void (^ _Nonnull)(ConsumePurchaseResponse * _Nullable, GenericError * _Nullable))completion;
+/// Consume a list of purchased product specified with purchaseToken list.
+/// Once purchase is completed, as a part of purchase process you need to deliver a content with granting entitlement as a result of the user’s purchase.
+/// For one-time consumable product, you need to call consume method of the SDK to indicate that your app has granted entitlement to the user.
+/// With consumption of the one-time consumable product, the product can be purchased again.
+/// After consumption, the product will vanish in current purchases but will still exist in purchase history.
+/// \param purchaseTokens Tokens as String array created after a purchase. It can be found inside PurchaseInfo object.
+///
+/// \param completion Callbacks boolean and GenericError in case of failure.
+///
 - (void)consumePurchasesWithPurchaseTokens:(NSArray<NSString *> * _Nonnull)purchaseTokens completion:(void (^ _Nonnull)(ConsumePurchaseResponse * _Nullable, GenericError * _Nullable))completion;
+/// Restores all the previous purchases of current user.
+/// If user has purchases from previous installations of the application, it is possible to restore them by using this method.
+/// Apple obliges developers to add a restore button in their applications.
+/// \param completion Callbacks PurchaseInfo array and GenericError in case of failure.
+///
 - (void)restorePurchasesWithCompletion:(void (^ _Nonnull)(NSArray<PurchaseInfo *> * _Nullable, GenericError * _Nullable))completion;
+/// Navigates to Subscriptions page of the device.
+/// Apple does not allow developer to end subscriptions directly; instead, directs to the Subscriptions page of the device.
 - (void)unsubscribe;
+/// Checks whether a product is actively purchased or not.
+/// With calling [isProductPurchased] method of the SDK you can check whether a product is purchased or not.
+/// Once you query a product with productId, a boolean response comes back.
+/// True means that the product is purchased. After consumption, it will respond a false value.
+/// These are accepted as purchased:
+/// <ul>
+///   <li>
+///     Purchased but not consumed consumable products.
+///   </li>
+///   <li>
+///     Non-consumable products.
+///   </li>
+///   <li>
+///     Ongoing subscription products.
+///   </li>
+/// </ul>
+/// \param productId Id of the product to be checked.
+///
+/// \param completion Callbacks Bool and GenericError in case of failure.
+///
+- (void)isProductPurchasedWithProductId:(NSString * _Nonnull)productId completion:(void (^ _Nonnull)(BOOL, GenericError * _Nullable))completion;
+/// Creates a relation between current user and another user.
+/// This method allows developers to establish a connection between users. Thanks to this relation, sub-user will also own all the purchases  master user have made.
+/// For example, you have a user who has two devices and he/she wants to use your app with both of them.
+/// If your user has some purchases that made with the first userId, also second userId will be able to see this products as purchased.
+/// Whenever there is a change in a user’s entitlement to products within your app, the second device user also will be able to get this updates.
+/// It’s easy to use this feature with appmate only by establishing relationships between the users.
+/// \param with masterUserId Id of the user has the purchases of his/her own. User id can be retrieved via <em>getUserId</em> method.
+///
+/// \param completion Callbacks CreateUserRelationResponse and GenericError in case of failure.
+///
 - (void)createUserIdRelationWith:(NSString * _Nonnull)masterUserId completion:(void (^ _Nonnull)(CreateUserRelationResponse * _Nullable, GenericError * _Nullable))completion;
+/// Removes all the existing relations of a master.
+/// If you want to delete all the relationships related to the masterUserId, you can use deleteMasterUserIdRelation method by giving masterUserId as a parameter.
+/// \param for masterUserId Id of the user has the purchases of his/her own. User id can be retrieved via <em>getUserId</em> method.
+///
+/// \param completion Callbacks DeleteUserRelationResponse and GenericError in case of failure.
+///
 - (void)deleteMasterUserIdRelationFor:(NSString * _Nonnull)masterUserId completion:(void (^ _Nonnull)(DeleteUserRelationResponse * _Nullable, GenericError * _Nullable))completion;
+/// Removes the existing relation of a sub-user.
+/// It’s also possible to delete a relationship between the users.
+/// By giving subUserId as a parameter, you can use deleteSubUserIdRelation method and delete a relationship between subUserId and its master.
+/// \param for subUserId Id of the user has the purchases of another user. User id can be retrieved via <em>getUserId</em> method.
+///
+/// \param completion Callbacks DeleteUserRelationResponse and GenericError in case of failure.
+///
 - (void)deleteSubUserIdRelationFor:(NSString * _Nonnull)subUserId completion:(void (^ _Nonnull)(DeleteUserRelationResponse * _Nullable, GenericError * _Nullable))completion;
 @end
 
+/// Enumeration for all possible purchase transaction results.
 typedef SWIFT_ENUM(NSInteger, PurchaseCode, open) {
   PurchaseCodeSuccess = 0,
   PurchaseCodeUnknown = -1,
@@ -733,6 +1098,8 @@ static NSString * _Nonnull const PurchaseCodeDomain = @"appmate.PurchaseCode";
 
 @class SubscriptionPriceChange;
 
+/// An object which keeps all information about a purchase.
+/// After a purchase transaction, all the information created is kept in PurchaseInfo objects.
 SWIFT_CLASS("_TtC7appmate12PurchaseInfo")
 @interface PurchaseInfo : NSObject
 @property (nonatomic, copy) NSString * _Nonnull userId;
@@ -769,6 +1136,7 @@ SWIFT_CLASS("_TtC7appmate12PurchaseInfo")
 @end
 
 
+/// Result info of a purchase transaction such as success or failure.
 SWIFT_CLASS("_TtC7appmate18PurchaseResultInfo")
 @interface PurchaseResultInfo : NSObject
 @property (nonatomic, readonly, strong) PurchaseInfo * _Nullable purchaseInfo;
@@ -778,6 +1146,7 @@ SWIFT_CLASS("_TtC7appmate18PurchaseResultInfo")
 @end
 
 
+
 SWIFT_CLASS("_TtC7appmate23SubscriptionPriceChange")
 @interface SubscriptionPriceChange : NSObject
 @property (nonatomic, copy) NSString * _Nullable priceChangeDesc;
@@ -785,6 +1154,7 @@ SWIFT_CLASS("_TtC7appmate23SubscriptionPriceChange")
 @end
 
 
+/// An object which keeps information about a relation such as master and sub-user info.
 SWIFT_CLASS("_TtC7appmate12UserRelation")
 @interface UserRelation : NSObject
 @property (nonatomic, readonly, copy) NSString * _Nullable masterUser;

@@ -42,6 +42,9 @@ extension Foundation.Date {
   public var country: Swift.String?
   public var currency: Swift.String?
   public var price: Swift.String?
+  public var tier: Swift.String?
+  public var applePrice: Swift.String?
+  public var appleCurrency: Swift.String?
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
@@ -184,6 +187,7 @@ public struct ResultInfo : Swift.Codable {
   @objc public func consumePurchasesWithPurchaseTokens(_ purchaseTokens: [Swift.String], completion: @escaping (appmate.ConsumePurchaseResponse?, appmate.GenericError?) -> Swift.Void)
   @objc public func restorePurchases(completion: @escaping ([appmate.PurchaseInfo]?, appmate.GenericError?) -> Swift.Void)
   @objc public func unsubscribe()
+  @objc public func isProductPurchased(productId: Swift.String, completion: @escaping (Swift.Bool, appmate.GenericError?) -> Swift.Void)
   @objc public func createUserIdRelation(with masterUserId: Swift.String, completion: @escaping (appmate.CreateUserRelationResponse?, appmate.GenericError?) -> Swift.Void)
   @objc public func deleteMasterUserIdRelation(for masterUserId: Swift.String, completion: @escaping (appmate.DeleteUserRelationResponse?, appmate.GenericError?) -> Swift.Void)
   @objc public func deleteSubUserIdRelation(for subUserId: Swift.String, completion: @escaping (appmate.DeleteUserRelationResponse?, appmate.GenericError?) -> Swift.Void)
@@ -270,6 +274,20 @@ public let runtimePreProd: Swift.String
   public var appleSyncInfo: appmate.SyncInfo?
   public var applePriceDetails: [appmate.PriceTier]?
   public var appleActivePriceDetail: appmate.PriceTier?
+  @objc public var applePrice: Swift.String?
+  @objc public var appleCurrency: Swift.String?
+  public var prices: [appmate.PriceInfo]?
+  @objc public var appleSubsType: Swift.String?
+  public var appleSubsGroupRank: Swift.Int?
+  @objc public var appleSubsIntStartDate: Swift.String?
+  @objc public var appleSubsIntEndDate: Swift.String?
+  @objc public var appleSubsIntOfferType: Swift.String?
+  @objc public var appleSubsIntDuration: Swift.String?
+  public var appleSubsIntNumberOfPeriods: Swift.Int?
+  public var appleSubsIntFreeTrial: Swift.Bool?
+  @objc public var appleSubsIntFreeTrialDuration: Swift.String?
+  @objc public var appleSubsIntFreeTrialStartDate: Swift.String?
+  @objc public var appleSubsIntFreeTrialEndDate: Swift.String?
   @objc override dynamic public var description: Swift.String {
     @objc get
   }

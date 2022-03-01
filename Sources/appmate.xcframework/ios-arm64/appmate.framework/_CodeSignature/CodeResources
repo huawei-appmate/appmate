@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/appmate-Swift.h</key>
 		<data>
-		x9nojUaSJEK02AQHuM/6oxfO/h8=
+		qpgCPETRclIE+CKbt0UajzPPKcY=
 		</data>
 		<key>Headers/appmate.h</key>
 		<data>
@@ -14,35 +14,39 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		HBYfeMn4993Ydsla30+nrRTCxFs=
+		HfIgpoAHn6Y6nqdVKQbA/wU4w0M=
 		</data>
 		<key>Modules/appmate.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		7Q0tQXnHLK+mpQNQcOMzpHMmNpM=
+		vWLNPfq+noAPDigFc8gaZJwempU=
 		</data>
 		<key>Modules/appmate.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		QsOket+yVRWhSlwIvP0ZkmEro00=
+		LW+V1dodd9cKoPoAjjVwPpzkXU4=
 		</data>
 		<key>Modules/appmate.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		2WTg3EroXjRdUTxyC32ql1QOD6E=
+		cWujRmCfDgqFUnN7vOCvQ6hBETY=
 		</data>
 		<key>Modules/appmate.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		7Q0tQXnHLK+mpQNQcOMzpHMmNpM=
+		vWLNPfq+noAPDigFc8gaZJwempU=
 		</data>
 		<key>Modules/appmate.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		QsOket+yVRWhSlwIvP0ZkmEro00=
+		LW+V1dodd9cKoPoAjjVwPpzkXU4=
 		</data>
 		<key>Modules/appmate.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		2WTg3EroXjRdUTxyC32ql1QOD6E=
+		cWujRmCfDgqFUnN7vOCvQ6hBETY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		I72r4hx/PApmIIJyRdo3yVr8dM4=
+		</data>
+		<key>appmate.tech.der</key>
+		<data>
+		58kcO2Pcx8Ps27WxBykaAjyazT0=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -51,7 +55,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GBXXc5QxAE9hencq+tCln+N+9aHzRTzMy8HNpcORdvY=
+			2iTyCnhzs2Nfy4hi1UeCFgMSMSQSGTwuNGblCs1xfO8=
 			</data>
 		</dict>
 		<key>Headers/appmate.h</key>
@@ -65,42 +69,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			kJjuOQMaCjorzDEsaghClhv0km+BoXc7KeFmDPqKvak=
+			MNq/7QsC4e4nlVLrHFhwRZUfx3jD9Ebd1hKyeG4PjFI=
 			</data>
 		</dict>
 		<key>Modules/appmate.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			og3UPVRwSoqyvjUMGh7fj9OaMlt/yyGPdcIfiJK3lPY=
+			ng/dX5qxhk+eRs7vjHRYSLFmrjjxHDfWc+f7UmIu6oA=
 			</data>
 		</dict>
 		<key>Modules/appmate.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			WoaMtETW0I8qMC1pxiK8eGt7n7RN/jqcSr4jbiizuKY=
+			C9f9lLeTVh0wnXhTo15KrE34U+lQm82GARg5GqApwjs=
 			</data>
 		</dict>
 		<key>Modules/appmate.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kJjuOQMaCjorzDEsaghClhv0km+BoXc7KeFmDPqKvak=
+			MNq/7QsC4e4nlVLrHFhwRZUfx3jD9Ebd1hKyeG4PjFI=
 			</data>
 		</dict>
 		<key>Modules/appmate.swiftmodule/arm64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			og3UPVRwSoqyvjUMGh7fj9OaMlt/yyGPdcIfiJK3lPY=
+			ng/dX5qxhk+eRs7vjHRYSLFmrjjxHDfWc+f7UmIu6oA=
 			</data>
 		</dict>
 		<key>Modules/appmate.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			WoaMtETW0I8qMC1pxiK8eGt7n7RN/jqcSr4jbiizuKY=
+			C9f9lLeTVh0wnXhTo15KrE34U+lQm82GARg5GqApwjs=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -108,6 +112,13 @@
 			<key>hash2</key>
 			<data>
 			a9zV0mmE7MfaJ9mSQ3ZK3asR16qjvu22cc2jummKyWs=
+			</data>
+		</dict>
+		<key>appmate.tech.der</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			yC2XLkDqE/89jRlI8Xfrr2Jr3SuazPhsj6sN4IiKqrQ=
 			</data>
 		</dict>
 	</dict>
