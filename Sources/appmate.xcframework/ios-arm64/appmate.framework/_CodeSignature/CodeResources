@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/appmate-Swift.h</key>
 		<data>
-		qpgCPETRclIE+CKbt0UajzPPKcY=
+		otcW3Bgnk2TQRMeLrYUkOLow8Ww=
 		</data>
 		<key>Headers/appmate.h</key>
 		<data>
@@ -14,31 +14,19 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		HfIgpoAHn6Y6nqdVKQbA/wU4w0M=
+		J1Uz5yh/OZNx/PpgujJdZwrLbmQ=
 		</data>
 		<key>Modules/appmate.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		vWLNPfq+noAPDigFc8gaZJwempU=
+		EMN+4ReNz0UNCzxzSQFeYZ4VwzM=
 		</data>
 		<key>Modules/appmate.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		LW+V1dodd9cKoPoAjjVwPpzkXU4=
+		T/1UyCrQuF0iogxawSEX3zQZDw4=
 		</data>
 		<key>Modules/appmate.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		cWujRmCfDgqFUnN7vOCvQ6hBETY=
-		</data>
-		<key>Modules/appmate.swiftmodule/arm64.swiftdoc</key>
-		<data>
-		vWLNPfq+noAPDigFc8gaZJwempU=
-		</data>
-		<key>Modules/appmate.swiftmodule/arm64.swiftinterface</key>
-		<data>
-		LW+V1dodd9cKoPoAjjVwPpzkXU4=
-		</data>
-		<key>Modules/appmate.swiftmodule/arm64.swiftmodule</key>
-		<data>
-		cWujRmCfDgqFUnN7vOCvQ6hBETY=
+		Hmuv0S1h7dtebLwAAwcRqmNSXuo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -55,7 +43,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			2iTyCnhzs2Nfy4hi1UeCFgMSMSQSGTwuNGblCs1xfO8=
+			WM+vqILLSBE1FRdbPTUeUrhcUCsLWFQBddaVueovmuw=
 			</data>
 		</dict>
 		<key>Headers/appmate.h</key>
@@ -69,42 +57,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			MNq/7QsC4e4nlVLrHFhwRZUfx3jD9Ebd1hKyeG4PjFI=
+			EfEJPM0jjaEoHCQbwCBavX4Ojp2tNgwyfOqYZRkN+2U=
 			</data>
 		</dict>
 		<key>Modules/appmate.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ng/dX5qxhk+eRs7vjHRYSLFmrjjxHDfWc+f7UmIu6oA=
+			G6cv56U63lIjtuR7T9jE9EZTCvfeJN0DEg3zAXz4Sh0=
 			</data>
 		</dict>
 		<key>Modules/appmate.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			C9f9lLeTVh0wnXhTo15KrE34U+lQm82GARg5GqApwjs=
-			</data>
-		</dict>
-		<key>Modules/appmate.swiftmodule/arm64.swiftdoc</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			MNq/7QsC4e4nlVLrHFhwRZUfx3jD9Ebd1hKyeG4PjFI=
-			</data>
-		</dict>
-		<key>Modules/appmate.swiftmodule/arm64.swiftinterface</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			ng/dX5qxhk+eRs7vjHRYSLFmrjjxHDfWc+f7UmIu6oA=
-			</data>
-		</dict>
-		<key>Modules/appmate.swiftmodule/arm64.swiftmodule</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			C9f9lLeTVh0wnXhTo15KrE34U+lQm82GARg5GqApwjs=
+			rVG03RsPsAO8eF22/FhdAUo0npMc0LSmbzBkPwqlu8A=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
 // swift-module-flags: -target arm64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name appmate
 import CommonCrypto
 import Foundation
@@ -25,6 +25,31 @@ import _Concurrency
   @objc override dynamic public var description: Swift.String {
     @objc get
   }
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc public class ProductOffer : ObjectiveC.NSObject, Swift.Codable {
+  final public let introductoryOffer: appmate.IntroductoryOffer?
+  final public let freeTrial: appmate.FreeTrial?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc public class IntroductoryOffer : ObjectiveC.NSObject, Swift.Codable {
+  final public let appleDuration: Swift.String?
+  final public let offerType: Swift.String?
+  final public let numberOfPeriods: Swift.Int?
+  final public let startDate: Swift.String?
+  final public let endDate: Swift.String?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc public class FreeTrial : ObjectiveC.NSObject, Swift.Codable {
+  final public let appleDuration: Swift.String?
+  final public let startDate: Swift.String?
+  final public let endDate: Swift.String?
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
@@ -177,6 +202,7 @@ public struct ResultInfo : Swift.Codable {
   @objc public func setRuntimeEnvironment(_ environment: Swift.String)
   @objc public func setUserId(_ userId: Swift.String)
   @objc public func getUserId() -> Swift.String
+  @objc public func setOneSignalId(_ oneSignalId: Swift.String)
   @objc public func getProducts(completion: @escaping ([appmate.Product]?, appmate.GenericError?) -> Swift.Void)
   @objc public func getProductsWithType(_ type: Swift.String, completion: @escaping ([appmate.Product]?, appmate.GenericError?) -> Swift.Void)
   @objc public func getProductsWithIdList(_ idList: [Swift.String], completion: @escaping ([appmate.Product]?, appmate.GenericError?) -> Swift.Void)
@@ -199,9 +225,6 @@ public struct GetUserIdByPurchaseTokensResponse : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
-public let APIBaseURL: Swift.String
-public let APITestBaseURL: Swift.String
-public let APIPreProdBaseURL: Swift.String
 public let runtimeProd: Swift.String
 public let runtimeTest: Swift.String
 public let runtimePreProd: Swift.String
@@ -248,6 +271,11 @@ public let runtimePreProd: Swift.String
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
 }
+public struct BaseResponse : Swift.Codable {
+  public let result: appmate.ResultInfo?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
 @objc @_inheritsConvenienceInitializers public class DescriptionDecoder : ObjectiveC.NSObject {
   public func decode<T>(_ type: T.Type, from description: Swift.String) -> T? where T : Swift.Decodable
   @objc override dynamic public init()
@@ -288,10 +316,19 @@ public let runtimePreProd: Swift.String
   @objc public var appleSubsIntFreeTrialDuration: Swift.String?
   @objc public var appleSubsIntFreeTrialStartDate: Swift.String?
   @objc public var appleSubsIntFreeTrialEndDate: Swift.String?
+  @objc public var subscriptionDuration: appmate.SubscriptionDuration?
+  @objc public var productOffer: appmate.ProductOffer?
   @objc override dynamic public var description: Swift.String {
     @objc get
   }
   @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc public class SubscriptionDuration : ObjectiveC.NSObject, Swift.Codable {
+  final public let duration: Swift.Int?
+  final public let appleDuration: Swift.String?
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws

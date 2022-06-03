@@ -16,6 +16,6 @@ let package = Package(
         // .package(url: /* package url */, from: "1.0.0"),
     ],
     targets: [
-        .binaryTarget(name: "Appmate", path: "./Sources/appmate.xcframework")
+        .binaryTarget(name: "Appmate", path: "./Sources/Appmate.xcframework")
     ]
 )
