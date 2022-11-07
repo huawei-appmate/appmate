@@ -6,6 +6,6 @@ framework module appmate {
 }
 
 module appmate.Swift {
-    header "appmate-Swift.h"
-    requires objc
+  header "appmate-Swift.h"
+  requires objc
 }

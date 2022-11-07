@@ -1,13 +1,16 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name appmate
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import CommonCrypto
 import Foundation
 import StoreKit
 import Swift
 import UIKit
 import _Concurrency
+import _StringProcessing
 @_exported import appmate
+import os
 @objc @_hasMissingDesignatedInitializers @objcMembers public class PurchaseResultInfo : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let purchaseInfo: appmate.PurchaseInfo?
   final public let purchaseCode: appmate.PurchaseCode?
@@ -54,6 +57,25 @@ import _Concurrency
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
 }
+public struct OfferwallResponse : Swift.Codable {
+  public let result: appmate.ResultInfo?
+  public let data: appmate.OfferWall?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension UIKit.UIDevice {
+  @_Concurrency.MainActor(unsafe) public static let modelName: Swift.String
+}
+@objc public class Entitlement : ObjectiveC.NSObject, Swift.Codable {
+  final public let id: Swift.String?
+  final public let uspAppId: Swift.String?
+  final public let accessId: Swift.String?
+  final public let accessName: Swift.String?
+  final public let entitlementStatus: Swift.Bool?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public struct ProductResponse : Swift.Codable {
   public let result: appmate.ResultInfo?
   public let data: [appmate.Product]?
@@ -83,6 +105,9 @@ public struct PurchaseResponse : Swift.Codable {
 public struct PurchaseResponseData : Swift.Codable {
   public let message: Swift.String?
   public let invalidPurchaseTokens: [Swift.String]?
+  public let validPurchaseTokens: [Swift.String]?
+  public let errorPurchaseTokens: [Swift.String]?
+  public let productNotFoundInConsole: [Swift.String]?
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
@@ -121,6 +146,11 @@ public enum ProductType : Swift.String, Swift.Codable {
     get
   }
 }
+public class GetEntitlementsResponse : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 @_hasMissingDesignatedInitializers public class PriceTier : Swift.Codable {
   public var tier: Swift.String?
   public var startDate: Swift.String?
@@ -131,6 +161,54 @@ public enum ProductType : Swift.String, Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
 }
+@objc @_inheritsConvenienceInitializers @objcMembers public class OfferWall : ObjectiveC.NSObject, Swift.Codable {
+  final public let defaultOffer: Swift.Bool?
+  @objc final public let offerDescription: Swift.String?
+  final public let metadata: [appmate.MetaData]?
+  @objc final public let offeringId: Swift.String?
+  @objc public var products: [appmate.Product]?
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case defaultOffer, metadata, offeringId, products
+    case offerDescription
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objcMembers public class MetaData : Swift.Codable {
+  @objc final public let id: Swift.String?
+  final public let numericValue: Swift.Double?
+  final public let type: appmate.MetaDataType?
+  @objc final public let value: Swift.String?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+public enum MetaDataType : Swift.String, Swift.Codable {
+  case label
+  case text
+  case number
+  case image
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
 @objc @_hasMissingDesignatedInitializers @objcMembers public class ConsumePurchaseResponse : ObjectiveC.NSObject, Swift.Codable {
   final public let result: appmate.ResultInfo?
   final public let data: Swift.Bool?
@@ -140,6 +218,11 @@ public enum ProductType : Swift.String, Swift.Codable {
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
+}
+public enum RuntimeEnvironment {
+  public static let prod: Swift.String
+  public static let test: Swift.String
+  public static let preProd: Swift.String
 }
 public struct PurchaseInfoResponse : Swift.Codable {
   public let result: appmate.ResultInfo?
@@ -174,7 +257,6 @@ public struct ResultInfo : Swift.Codable {
   @objc public var currency: Swift.String
   @objc public var price: Swift.String
   @objc public var subGroupId: Swift.String?
-  @objc public var cancelReason: Swift.String?
   @objc public var expireTime: Swift.String?
   @objc public var lastOrderId: Swift.String?
   public var inTrialPeriod: Swift.Bool?
@@ -188,6 +270,13 @@ public struct ResultInfo : Swift.Codable {
   @objc public var autoResumeTime: Swift.String?
   @objc public var linkedPurchasedToken: Swift.String?
   @objc public var receiptData: Swift.String?
+  public var verificationStatus: Swift.Int?
+  public var takehomePercentage: Swift.Double?
+  @objc public var trialConversionTime: Swift.String?
+  public var verificationRetryCount: Swift.Int?
+  @objc public var createDate: Swift.String?
+  @objc public var updateDate: Swift.String?
+  @objc public var reportingPrices: [Swift.String : Swift.Double]
   @objc override dynamic public var description: Swift.String {
     @objc get
   }
@@ -198,11 +287,15 @@ public struct ResultInfo : Swift.Codable {
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class PurchaseClient : ObjectiveC.NSObject {
   @objc public static var shared: appmate.PurchaseClient
   @objc public func setSandboxActive(_ isActive: Swift.Bool)
+  @objc public func enableDebugLogs(_ enable: Swift.Bool)
   @objc public func setApiKey(_ apiKey: Swift.String)
   @objc public func setRuntimeEnvironment(_ environment: Swift.String)
   @objc public func setUserId(_ userId: Swift.String)
   @objc public func getUserId() -> Swift.String
   @objc public func setOneSignalId(_ oneSignalId: Swift.String)
+  @objc public func setAppsFlyerId(_ appsFlyerId: Swift.String)
+  @objc public func setIDFA(_ IDFA: Swift.String)
+  @objc public func setUserAttributes(_ userAttribute: [Swift.String : Any])
   @objc public func getProducts(completion: @escaping ([appmate.Product]?, appmate.GenericError?) -> Swift.Void)
   @objc public func getProductsWithType(_ type: Swift.String, completion: @escaping ([appmate.Product]?, appmate.GenericError?) -> Swift.Void)
   @objc public func getProductsWithIdList(_ idList: [Swift.String], completion: @escaping ([appmate.Product]?, appmate.GenericError?) -> Swift.Void)
@@ -217,6 +310,9 @@ public struct ResultInfo : Swift.Codable {
   @objc public func createUserIdRelation(with masterUserId: Swift.String, completion: @escaping (appmate.CreateUserRelationResponse?, appmate.GenericError?) -> Swift.Void)
   @objc public func deleteMasterUserIdRelation(for masterUserId: Swift.String, completion: @escaping (appmate.DeleteUserRelationResponse?, appmate.GenericError?) -> Swift.Void)
   @objc public func deleteSubUserIdRelation(for subUserId: Swift.String, completion: @escaping (appmate.DeleteUserRelationResponse?, appmate.GenericError?) -> Swift.Void)
+  @objc public func getEntitlements(completion: @escaping ([Swift.String]?, appmate.GenericError?) -> Swift.Void)
+  @objc public func saveAppUserEvents(event: appmate.UserEvent, completion: ((Swift.Bool, appmate.GenericError?) -> Swift.Void)? = nil)
+  @objc public func getOfferWall(_ offeringId: Swift.String? = nil, completion: ((appmate.OfferWall?, appmate.GenericError?) -> Swift.Void)? = nil)
   @objc deinit
 }
 public struct GetUserIdByPurchaseTokensResponse : Swift.Codable {
@@ -225,9 +321,6 @@ public struct GetUserIdByPurchaseTokensResponse : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
-public let runtimeProd: Swift.String
-public let runtimeTest: Swift.String
-public let runtimePreProd: Swift.String
 @objc public enum PurchaseCode : ObjectiveC.NSInteger, Swift.Error, Swift.Codable {
   case success = 0
   case unknown = -1
@@ -280,6 +373,20 @@ public struct BaseResponse : Swift.Codable {
   public func decode<T>(_ type: T.Type, from description: Swift.String) -> T? where T : Swift.Decodable
   @objc override dynamic public init()
   @objc deinit
+}
+@objc @objcMembers public class UserEvent : ObjectiveC.NSObject {
+  @objc public init(productId: Swift.String? = nil, offeringId: Swift.String? = nil, userEventType: appmate.UserEventType)
+  @objc deinit
+}
+@objc public enum UserEventType : Swift.Int {
+  case AppLaunch
+  case ViewProduct
+  case PurchaseProduct
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class Product : ObjectiveC.NSObject, Swift.Codable {
   @objc public var productId: Swift.String?
@@ -359,6 +466,15 @@ public struct BaseResponse : Swift.Codable {
 extension appmate.ProductType : Swift.Equatable {}
 extension appmate.ProductType : Swift.Hashable {}
 extension appmate.ProductType : Swift.RawRepresentable {}
+extension appmate.OfferWall.CodingKeys : Swift.Equatable {}
+extension appmate.OfferWall.CodingKeys : Swift.Hashable {}
+extension appmate.OfferWall.CodingKeys : Swift.RawRepresentable {}
+extension appmate.MetaDataType : Swift.Equatable {}
+extension appmate.MetaDataType : Swift.Hashable {}
+extension appmate.MetaDataType : Swift.RawRepresentable {}
 extension appmate.PurchaseCode : Swift.Equatable {}
 extension appmate.PurchaseCode : Swift.Hashable {}
 extension appmate.PurchaseCode : Swift.RawRepresentable {}
+extension appmate.UserEventType : Swift.Equatable {}
+extension appmate.UserEventType : Swift.Hashable {}
+extension appmate.UserEventType : Swift.RawRepresentable {}
