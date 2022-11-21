@@ -406,6 +406,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) PurchaseClient * _Nonn
 /// \param enable Set to true to show Appmate logs.
 ///
 - (void)enableDebugLogs:(BOOL)enable;
+/// Use this method to enable Apple Ad Service attribution token collection and send it to appmate.
+- (void)enableAdServicesAttributionCollection;
 /// Sets  appmate apiKey.
 /// Api key can be retrieved from appmate portal via navigating to application page.
 /// \param apiKey Unique identifier for using appmate services.
@@ -1176,6 +1178,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) PurchaseClient * _Nonn
 /// \param enable Set to true to show Appmate logs.
 ///
 - (void)enableDebugLogs:(BOOL)enable;
+/// Use this method to enable Apple Ad Service attribution token collection and send it to appmate.
+- (void)enableAdServicesAttributionCollection;
 /// Sets  appmate apiKey.
 /// Api key can be retrieved from appmate portal via navigating to application page.
 /// \param apiKey Unique identifier for using appmate services.
