@@ -8,6 +8,7 @@ import Foundation
 import StoreKit
 import Swift
 import UIKit
+import WebKit
 import _Concurrency
 import _StringProcessing
 @_exported import appmate
@@ -169,8 +170,10 @@ public class GetEntitlementsResponse : Swift.Codable {
   final public let metadata: [appmate.MetaData]?
   @objc final public let offeringId: Swift.String?
   @objc public var products: [appmate.Product]?
+  public var isHtmlOfferwall: Swift.Bool?
+  @objc public var html: Swift.String?
   public enum CodingKeys : Swift.String, Swift.CodingKey {
-    case defaultOffer, metadata, offeringId, products
+    case defaultOffer, metadata, offeringId, products, html, isHtmlOfferwall
     case offerDescription
     public init?(rawValue: Swift.String)
     public init?(stringValue: Swift.String)
@@ -320,6 +323,7 @@ public struct ResultInfo : Swift.Codable {
   @objc public func getEntitlements(completion: @escaping ([Swift.String]?, appmate.GenericError?) -> Swift.Void)
   @objc public func saveAppUserEvents(event: appmate.UserEvent, completion: ((Swift.Bool, appmate.GenericError?) -> Swift.Void)? = nil)
   @objc public func getOfferWall(_ offeringId: Swift.String? = nil, completion: ((appmate.OfferWall?, appmate.GenericError?) -> Swift.Void)? = nil)
+  @objc public func getHtmlOfferWall(_ offeringId: Swift.String? = nil, completion: ((UIKit.UIViewController?, appmate.GenericError?) -> Swift.Void)? = nil, onPurchaseDone: @escaping (appmate.Product) -> Swift.Void)
   @objc deinit
 }
 public struct GetUserIdByPurchaseTokensResponse : Swift.Codable {

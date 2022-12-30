@@ -318,6 +318,7 @@ SWIFT_CLASS("_TtC7appmate9OfferWall")
 @property (nonatomic, readonly, copy) NSString * _Nullable offerDescription;
 @property (nonatomic, readonly, copy) NSString * _Nullable offeringId;
 @property (nonatomic, copy) NSArray<Product *> * _Nullable products;
+@property (nonatomic, copy) NSString * _Nullable html;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -387,6 +388,7 @@ SWIFT_CLASS("_TtC7appmate12ProductOffer")
 @class PurchaseResultInfo;
 enum PurchaseCode : NSInteger;
 @class UserEvent;
+@class UIViewController;
 
 /// A class used for creating and controlling in-app purchases.
 /// PurchaseClient is the main class of appmate. Appmate helps developers to manage in-application purchases easily. Thanks to appmate, it is much easier to create and consume IAP products, manage purchases, user relations and vice versa. For further information you can view the detailed <a href="http://www.appmate.tech/docs/sdk/ios">documentation</a>.
@@ -608,12 +610,18 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) PurchaseClient * _Nonn
 /// \param completion true if the event saved successfully or get the error msg if the result is false
 ///
 - (void)saveAppUserEventsWithEvent:(UserEvent * _Nonnull)event completion:(void (^ _Nullable)(BOOL, GenericError * _Nullable))completion;
-/// Use this methode to retrive a list of  offers that are assigned to the current app.
-/// \param completion returns a list of OfferWall items or a generic error in case of fail.
+/// Use this methode to retrive an offer that are assigned to the current app.
+/// \param completion returns  OfferWall item or a generic error in case of fail.
 ///
 /// \param appId An Appmate appId, (skip pass this value if you want to use the default appId stored in Appmate database).
 ///
 - (void)getOfferWall:(NSString * _Nullable)offeringId completion:(void (^ _Nullable)(OfferWall * _Nullable, GenericError * _Nullable))completion;
+/// Use this methode to retrive any html view that you have designed as offer to the users.
+/// \param completion returns a view controller that you can embed it in any place on your app or a generic error in case of fail.
+///
+/// \param appId An Appmate appId, (skip pass this value if you want to use the default appId stored in Appmate database).
+///
+- (void)getHtmlOfferWall:(NSString * _Nullable)offeringId completion:(void (^ _Nullable)(UIViewController * _Nullable, GenericError * _Nullable))completion onPurchaseDone:(void (^ _Nonnull)(Product * _Nonnull))onPurchaseDone;
 @end
 
 /// Enumeration for all possible purchase transaction results.
@@ -1090,6 +1098,7 @@ SWIFT_CLASS("_TtC7appmate9OfferWall")
 @property (nonatomic, readonly, copy) NSString * _Nullable offerDescription;
 @property (nonatomic, readonly, copy) NSString * _Nullable offeringId;
 @property (nonatomic, copy) NSArray<Product *> * _Nullable products;
+@property (nonatomic, copy) NSString * _Nullable html;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -1159,6 +1168,7 @@ SWIFT_CLASS("_TtC7appmate12ProductOffer")
 @class PurchaseResultInfo;
 enum PurchaseCode : NSInteger;
 @class UserEvent;
+@class UIViewController;
 
 /// A class used for creating and controlling in-app purchases.
 /// PurchaseClient is the main class of appmate. Appmate helps developers to manage in-application purchases easily. Thanks to appmate, it is much easier to create and consume IAP products, manage purchases, user relations and vice versa. For further information you can view the detailed <a href="http://www.appmate.tech/docs/sdk/ios">documentation</a>.
@@ -1380,12 +1390,18 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) PurchaseClient * _Nonn
 /// \param completion true if the event saved successfully or get the error msg if the result is false
 ///
 - (void)saveAppUserEventsWithEvent:(UserEvent * _Nonnull)event completion:(void (^ _Nullable)(BOOL, GenericError * _Nullable))completion;
-/// Use this methode to retrive a list of  offers that are assigned to the current app.
-/// \param completion returns a list of OfferWall items or a generic error in case of fail.
+/// Use this methode to retrive an offer that are assigned to the current app.
+/// \param completion returns  OfferWall item or a generic error in case of fail.
 ///
 /// \param appId An Appmate appId, (skip pass this value if you want to use the default appId stored in Appmate database).
 ///
 - (void)getOfferWall:(NSString * _Nullable)offeringId completion:(void (^ _Nullable)(OfferWall * _Nullable, GenericError * _Nullable))completion;
+/// Use this methode to retrive any html view that you have designed as offer to the users.
+/// \param completion returns a view controller that you can embed it in any place on your app or a generic error in case of fail.
+///
+/// \param appId An Appmate appId, (skip pass this value if you want to use the default appId stored in Appmate database).
+///
+- (void)getHtmlOfferWall:(NSString * _Nullable)offeringId completion:(void (^ _Nullable)(UIViewController * _Nullable, GenericError * _Nullable))completion onPurchaseDone:(void (^ _Nonnull)(Product * _Nonnull))onPurchaseDone;
 @end
 
 /// Enumeration for all possible purchase transaction results.

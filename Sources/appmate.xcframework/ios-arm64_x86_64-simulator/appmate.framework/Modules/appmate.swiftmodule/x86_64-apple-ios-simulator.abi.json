@@ -2804,6 +2804,23 @@
       },
       {
         "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "appmate",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "WebKit",
+        "printedName": "WebKit",
+        "declKind": "Import",
+        "moduleName": "appmate"
+      },
+      {
+        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -6972,6 +6989,233 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "isHtmlOfferwall",
+            "printedName": "isHtmlOfferwall",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Bool?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7appmate9OfferWallC15isHtmlOfferwallSbSgvp",
+            "mangledName": "$s7appmate9OfferWallC15isHtmlOfferwallSbSgvp",
+            "moduleName": "appmate",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Bool?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bool",
+                        "printedName": "Swift.Bool",
+                        "usr": "s:Sb"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7appmate9OfferWallC15isHtmlOfferwallSbSgvg",
+                "mangledName": "$s7appmate9OfferWallC15isHtmlOfferwallSbSgvg",
+                "moduleName": "appmate",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Bool?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bool",
+                        "printedName": "Swift.Bool",
+                        "usr": "s:Sb"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7appmate9OfferWallC15isHtmlOfferwallSbSgvs",
+                "mangledName": "$s7appmate9OfferWallC15isHtmlOfferwallSbSgvs",
+                "moduleName": "appmate",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7appmate9OfferWallC15isHtmlOfferwallSbSgvM",
+                "mangledName": "$s7appmate9OfferWallC15isHtmlOfferwallSbSgvM",
+                "moduleName": "appmate",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "html",
+            "printedName": "html",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@appmate@objc(cs)OfferWall(py)html",
+            "mangledName": "$s7appmate9OfferWallC4htmlSSSgvp",
+            "moduleName": "appmate",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@appmate@objc(cs)OfferWall(im)html",
+                "mangledName": "$s7appmate9OfferWallC4htmlSSSgvg",
+                "moduleName": "appmate",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@appmate@objc(cs)OfferWall(im)setHtml:",
+                "mangledName": "$s7appmate9OfferWallC4htmlSSSgvs",
+                "moduleName": "appmate",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7appmate9OfferWallC4htmlSSSgvM",
+                "mangledName": "$s7appmate9OfferWallC4htmlSSSgvM",
+                "moduleName": "appmate",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
             "kind": "TypeDecl",
             "name": "CodingKeys",
             "printedName": "CodingKeys",
@@ -7122,6 +7366,80 @@
                 "declKind": "EnumElement",
                 "usr": "s:7appmate9OfferWallC10CodingKeysO8productsyA2EmF",
                 "mangledName": "$s7appmate9OfferWallC10CodingKeysO8productsyA2EmF",
+                "moduleName": "appmate"
+              },
+              {
+                "kind": "Var",
+                "name": "html",
+                "printedName": "html",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(appmate.OfferWall.CodingKeys.Type) -> appmate.OfferWall.CodingKeys",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CodingKeys",
+                        "printedName": "appmate.OfferWall.CodingKeys",
+                        "usr": "s:7appmate9OfferWallC10CodingKeysO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "appmate.OfferWall.CodingKeys.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "CodingKeys",
+                            "printedName": "appmate.OfferWall.CodingKeys",
+                            "usr": "s:7appmate9OfferWallC10CodingKeysO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:7appmate9OfferWallC10CodingKeysO4htmlyA2EmF",
+                "mangledName": "$s7appmate9OfferWallC10CodingKeysO4htmlyA2EmF",
+                "moduleName": "appmate"
+              },
+              {
+                "kind": "Var",
+                "name": "isHtmlOfferwall",
+                "printedName": "isHtmlOfferwall",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(appmate.OfferWall.CodingKeys.Type) -> appmate.OfferWall.CodingKeys",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CodingKeys",
+                        "printedName": "appmate.OfferWall.CodingKeys",
+                        "usr": "s:7appmate9OfferWallC10CodingKeysO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "appmate.OfferWall.CodingKeys.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "CodingKeys",
+                            "printedName": "appmate.OfferWall.CodingKeys",
+                            "usr": "s:7appmate9OfferWallC10CodingKeysO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:7appmate9OfferWallC10CodingKeysO15isHtmlOfferwallyA2EmF",
+                "mangledName": "$s7appmate9OfferWallC10CodingKeysO15isHtmlOfferwallyA2EmF",
                 "moduleName": "appmate"
               },
               {
@@ -15307,6 +15625,117 @@
             "declKind": "Func",
             "usr": "c:@M@appmate@objc(cs)PurchaseClient(im)getOfferWall:completion:",
             "mangledName": "$s7appmate14PurchaseClientC12getOfferWall_10completionySSSg_yAA0eF0CSg_AA12GenericErrorCSgtcSgtF",
+            "moduleName": "appmate",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getHtmlOfferWall",
+            "printedName": "getHtmlOfferWall(_:completion:onPurchaseDone:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((UIKit.UIViewController?, appmate.GenericError?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(UIKit.UIViewController?, appmate.GenericError?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(UIKit.UIViewController?, appmate.GenericError?)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "UIKit.UIViewController?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "UIViewController",
+                                "printedName": "UIKit.UIViewController",
+                                "usr": "c:objc(cs)UIViewController"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "appmate.GenericError?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "GenericError",
+                                "printedName": "appmate.GenericError",
+                                "usr": "c:@M@appmate@objc(cs)GenericError"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(appmate.Product) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Product",
+                    "printedName": "appmate.Product",
+                    "usr": "c:@M@appmate@objc(cs)Product"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@appmate@objc(cs)PurchaseClient(im)getHtmlOfferWall:completion:onPurchaseDone:",
+            "mangledName": "$s7appmate14PurchaseClientC16getHtmlOfferWall_10completion02onB4DoneySSSg_ySo16UIViewControllerCSg_AA12GenericErrorCSgtcSgyAA7ProductCctF",
             "moduleName": "appmate",
             "declAttributes": [
               "AccessControl",
@@ -26268,77 +26697,91 @@
     {
       "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Manager\/SyncManager.swift",
       "kind": "StringLiteral",
+      "offset": 271,
+      "length": 13,
+      "value": "\"SyncManager\""
+    },
+    {
+      "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Manager\/SyncManager.swift",
+      "kind": "StringLiteral",
       "offset": 105,
       "length": 11,
       "value": "\"appmate.SyncManager\""
     },
     {
+      "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Utils\/Logger.swift",
+      "kind": "BooleanLiteral",
+      "offset": 359,
+      "length": 5,
+      "value": "false"
+    },
+    {
       "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Model\/Offerwall\/OfferWall.swift",
       "kind": "StringLiteral",
-      "offset": 478,
+      "offset": 568,
       "length": 13,
       "value": "\"description\""
     },
     {
       "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Model\/Offerwall\/OfferWall.swift",
       "kind": "StringLiteral",
-      "offset": 478,
+      "offset": 568,
       "length": 13,
       "value": "\"description\""
     },
     {
       "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Model\/Offerwall\/OfferWall.swift",
       "kind": "StringLiteral",
-      "offset": 910,
+      "offset": 1000,
       "length": 7,
       "value": "\"LABEL\""
     },
     {
       "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Model\/Offerwall\/OfferWall.swift",
       "kind": "StringLiteral",
-      "offset": 934,
+      "offset": 1024,
       "length": 6,
       "value": "\"TEXT\""
     },
     {
       "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Model\/Offerwall\/OfferWall.swift",
       "kind": "StringLiteral",
-      "offset": 959,
+      "offset": 1049,
       "length": 8,
       "value": "\"NUMBER\""
     },
     {
       "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Model\/Offerwall\/OfferWall.swift",
       "kind": "StringLiteral",
-      "offset": 985,
+      "offset": 1075,
       "length": 7,
       "value": "\"IMAGE\""
     },
     {
       "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Model\/Offerwall\/OfferWall.swift",
       "kind": "StringLiteral",
-      "offset": 910,
+      "offset": 1000,
       "length": 7,
       "value": "\"LABEL\""
     },
     {
       "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Model\/Offerwall\/OfferWall.swift",
       "kind": "StringLiteral",
-      "offset": 934,
+      "offset": 1024,
       "length": 6,
       "value": "\"TEXT\""
     },
     {
       "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Model\/Offerwall\/OfferWall.swift",
       "kind": "StringLiteral",
-      "offset": 959,
+      "offset": 1049,
       "length": 8,
       "value": "\"NUMBER\""
     },
     {
       "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Model\/Offerwall\/OfferWall.swift",
       "kind": "StringLiteral",
-      "offset": 985,
+      "offset": 1075,
       "length": 7,
       "value": "\"IMAGE\""
     },
@@ -26730,35 +27173,42 @@
     {
       "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Utils\/GlobalConfigurations.swift",
       "kind": "StringLiteral",
-      "offset": 1341,
+      "offset": 1306,
+      "length": 21,
+      "value": "\"\/test\/exception\/ios\""
+    },
+    {
+      "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Utils\/GlobalConfigurations.swift",
+      "kind": "StringLiteral",
+      "offset": 1393,
       "length": 21,
       "value": "\"2023\/11\/21 02:59:59\""
     },
     {
       "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Utils\/GlobalConfigurations.swift",
       "kind": "StringLiteral",
-      "offset": 1403,
+      "offset": 1455,
       "length": 21,
       "value": "\"yyyy-MM-dd HH:mm:ss\""
     },
     {
       "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Utils\/GlobalConfigurations.swift",
       "kind": "StringLiteral",
-      "offset": 1490,
+      "offset": 1542,
       "length": 6,
       "value": "\"prod\""
     },
     {
       "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Utils\/GlobalConfigurations.swift",
       "kind": "StringLiteral",
-      "offset": 1526,
+      "offset": 1578,
       "length": 6,
       "value": "\"test\""
     },
     {
       "filePath": "\/Users\/admin\/Desktop\/Projects\/IOS\/Unified_Services_Platform_iOS_SDK\/DEV\/appmate\/Utils\/GlobalConfigurations.swift",
       "kind": "StringLiteral",
-      "offset": 1565,
+      "offset": 1617,
       "length": 9,
       "value": "\"preprod\""
     },
